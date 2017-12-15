@@ -1,25 +1,22 @@
 package sf.com.marathon;
 
-import android.app.Activity;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
-
-import java.net.URL;
-
 import sf.com.marathon.beans.CollectionInformation;
-import sf.com.marathon.connectivity.HttpClient;
 import sf.com.marathon.connectivity.TransferManager;
 import sf.com.marathon.utils.GsonUtils;
 import sf.com.marathon.utils.ToastUtils;
 
 import static sf.com.marathon.utils.UrlConstants.URL_GET_COLLECTION_INFORMATION;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
     private TextView collectionNameView;
     private TextView weightView;
     private TextView minSendPackageView;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +50,9 @@ public class MainActivity extends Activity {
         collectionNameView = findViewById(R.id.collection_name_view);
         weightView = findViewById(R.id.weight_view);
         minSendPackageView = findViewById(R.id.min_send_package_view);
+        toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
     }
 
     private void showInformation(CollectionInformation collectionInformation) {
