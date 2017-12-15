@@ -1,14 +1,13 @@
 package com.sf.marathon.task;
 
-import java.util.List;
-
+import com.sf.marathon.dao.PackGroupDao;
+import com.sf.marathon.dao.ProMarketBaseDao;
+import com.sf.marathon.domain.ProMarketBase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import com.sf.marathon.dao.PackGroupDao;
-import com.sf.marathon.dao.ProMarketBaseDao;
-import com.sf.marathon.domain.ProMarketBase;
+import java.util.List;
 
 @Component
 public class GroupTask {
