@@ -47,10 +47,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initUi() {
-        collectionNameView = findViewById(R.id.collection_name_view);
-        weightView = findViewById(R.id.weight_view);
-        minSendPackageView = findViewById(R.id.min_send_package_view);
-        toolbar = findViewById(R.id.toolbar);
+        collectionNameView = (TextView) findViewById(R.id.collection_name_view);
+        weightView = (TextView) findViewById(R.id.weight_view);
+        minSendPackageView = (TextView) findViewById(R.id.min_send_package_view);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
     }

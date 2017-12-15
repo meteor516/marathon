@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/x800"
+    android:layout_height="@dimen/y1200"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="@dimen/x300"
+        android:layout_height="@dimen/y300"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y80"
+        android:src="@drawable/green_tick" />
+
+    <TextView
+        android:id="@+id/textViewSignUpSuccess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y30"
+        android:gravity="center_horizontal"
+        android:text="@string/success_sign_up"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/textViewTranspondTip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewSignUpSuccess"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y30"
+        android:text="@string/transpond_tip" />
+
+    <RelativeLayout
+        android:id="@+id/sendToFriendLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewTranspondTip"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_marginRight="@dimen/x20"
+        android:layout_marginTop="@dimen/y50"
+        android:background="@color/green_button"
+        android:paddingBottom="@dimen/y20"
+        android:paddingTop="@dimen/y20">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+            <TextView
+                android:id="@+id/textViewSend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/send_to_wechat_friend"
+                android:textColor="@color/white" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/textViewSend"
+                android:layout_alignTop="@+id/textViewSend"
+                android:layout_toRightOf="@id/textViewSend"
+                android:src="@drawable/white_wechat" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:clickable="true"
+        android:id="@+id/shareFriendCircleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sendToFriendLayout"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_marginRight="@dimen/x20"
+        android:layout_marginTop="@dimen/y30"
+        android:layout_marginBottom="@dimen/y40"
+        android:background="#f8f8f8"
+        android:paddingBottom="@dimen/y20"
+        android:paddingTop="@dimen/y20">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+            <TextView
+                android:id="@+id/textViewShare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/share_to_friend_circle"
+                android:textColor="@color/black" />
+
+            <ImageView
+                android:layout_marginLeft="@dimen/x35"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/textViewShare"
+                android:layout_alignTop="@+id/textViewShare"
+                android:layout_toRightOf="@id/textViewShare"
+                android:src="@drawable/friend_circle" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+</RelativeLayout>
