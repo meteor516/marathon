@@ -1,4 +1,4 @@
-package com.sf.marathon.Dto;
+package com.sf.marathon.dto;
 
 import java.util.Date;
 
