@@ -17,7 +17,7 @@ public class StringUtils {
     }
 
     public static boolean isEmpty(String anyString) {
-        return anyString == null || anyString.equals("");
+        return anyString == null || "".equals(anyString);
     }
 
     public static boolean isNotEmpty(String anyString) {
