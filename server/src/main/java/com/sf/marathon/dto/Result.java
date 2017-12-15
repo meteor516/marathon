@@ -6,7 +6,7 @@ public class Result<T> implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private String errorMsg;
-    private T reponse;
+    private T response;
     private Boolean isSuccess;
 
     public String getErrorMsg() {
@@ -17,15 +17,23 @@ public class Result<T> implements Serializable {
         this.errorMsg = errorMsg;
     }
 
-    public T getReponse() {
-        return reponse;
-    }
+    public T getResponse() {
+		return response;
+	}
 
-    public void setReponse(T reponse) {
-        this.reponse = reponse;
-    }
+	public void setResponse(T response) {
+		this.response = response;
+	}
 
-    public Boolean getSuccess() {
+	public Boolean getIsSuccess() {
+		return isSuccess;
+	}
+
+	public void setIsSuccess(Boolean isSuccess) {
+		this.isSuccess = isSuccess;
+	}
+
+	public Boolean getSuccess() {
         return isSuccess;
     }
 
