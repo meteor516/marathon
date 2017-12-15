@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.view.MotionEvent;
 import android.view.inputmethod.InputMethodManager;
 
-public class BaseActivity extends Activity{
+public class BaseActivity extends Activity {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         InputMethodManager systemService = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);

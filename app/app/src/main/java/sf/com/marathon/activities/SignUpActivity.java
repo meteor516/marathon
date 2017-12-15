@@ -1,7 +1,6 @@
 package sf.com.marathon.activities;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +13,7 @@ import sf.com.marathon.R;
 import sf.com.marathon.connectivity.TransferManager;
 import sf.com.marathon.utils.StringUtils;
 import sf.com.marathon.utils.ToastUtils;
+import sf.com.marathon.utils.UrlConstants;
 
 import static sf.com.marathon.utils.StringUtils.isBiggerThanAndEquals;
 import static sf.com.marathon.utils.StringUtils.isNotEmpty;
@@ -27,9 +27,10 @@ public class SignUpActivity extends BaseActivity {
     private EditText senderPhoneView;
     private EditText countView;
     private EditText weightEditView;
+    private View backButton;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.sign_up_activity);
@@ -41,6 +42,13 @@ public class SignUpActivity extends BaseActivity {
     }
 
     private void initListener() {
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         addressSelectView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,11 +86,11 @@ public class SignUpActivity extends BaseActivity {
     }
 
     private void signUp() {
-        TransferManager.buildClient(getApplicationContext(), "/hello")
+        TransferManager.buildClient(getApplicationContext(), UrlConstants.URL_SIGN_UP)
                 .withOnFailedListener(new TransferManager.OnFailedListener() {
                     @Override
                     public void onFailed(String message, int errorType) {
-
+                        ToastUtils.showLong(getApplicationContext(), String.format("请求失败,错误原因是%s", message));
                     }
                 })
                 .withOnSuccessListener(new TransferManager.OnSuccessListener() {
@@ -103,6 +111,7 @@ public class SignUpActivity extends BaseActivity {
         weightEditView = findViewById(R.id.weight_edit_view);
 
         signUpButton = findViewById(R.id.sign_up_button);
+        backButton = findViewById(R.id.back_button);
     }
 
     public class DivisionValidator implements Validator<String> {

@@ -4,6 +4,9 @@ import android.content.Context;
 import android.widget.Toast;
 
 public class ToastUtils {
+    private ToastUtils() {
+
+    }
 
     public static void showShort(Context context, int resId) {
         showMessageWithResId(context, resId, Toast.LENGTH_SHORT);

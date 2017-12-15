@@ -29,6 +29,7 @@ public class HttpClient {
     public RequestResult get(String url) {
         try {
             Response response = execute(new Request.Builder().url(url).build());
+
             return response.isSuccessful()
                     ? RequestResult.success(response.body().string())
                     : RequestResult.failed(-1, "服务器异常");
@@ -42,6 +43,7 @@ public class HttpClient {
     private static Response execute(Request request) throws IOException {
         String head = request.headers().toString();
         Log.e("head", "head:" + head);
+
         return realHttpClient.newCall(request).execute();
     }
 }

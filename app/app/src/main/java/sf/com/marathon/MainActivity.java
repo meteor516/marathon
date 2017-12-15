@@ -1,22 +1,23 @@
 package sf.com.marathon;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.TextView;
 
+import sf.com.marathon.activities.SignUpActivity;
 import sf.com.marathon.connectivity.TransferManager;
-import sf.com.marathon.contact.ProMarketBase;
+import sf.com.marathon.contact.Pack;
 import sf.com.marathon.utils.GsonUtils;
 import sf.com.marathon.utils.ToastUtils;
 
 import static sf.com.marathon.utils.UrlConstants.URL_GET_COLLECTION_INFORMATION;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
     private TextView collectionNameView;
     private TextView weightView;
     private TextView minSendPackageView;
-    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 .withOnSuccessListener(new TransferManager.OnSuccessListener() {
                     @Override
                     public void onSuccess(String json) {
-                        ProMarketBase proMarketBase = GsonUtils.json2Bean(json, ProMarketBase.class);
-                        showMarketInformation(proMarketBase);
+                        showMarketInformation(GsonUtils.json2Bean(json, Pack.class));
                     }
                 })
                 .withOnFailedListener(new TransferManager.OnFailedListener() {
@@ -50,14 +50,20 @@ public class MainActivity extends AppCompatActivity {
         collectionNameView = findViewById(R.id.collection_name_view);
         weightView = findViewById(R.id.weight_view);
         minSendPackageView = findViewById(R.id.min_send_package_view);
-        toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("");
-        setSupportActionBar(toolbar);
+
+        View joinButton = findViewById(R.id.join_view);
+        joinButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
-    private void showMarketInformation(ProMarketBase proMarketBase) {
-        collectionNameView.setText(proMarketBase.getMarketName());
-        weightView.setText(String.format(getString(R.string.weight_format), proMarketBase.getMinWeight(), proMarketBase.getMaxWeight()));
-        minSendPackageView.setText(String.format(getString(R.string.count_of_day), proMarketBase.getDailyMinPackages()));
+    private void showMarketInformation(Pack pack) {
+        collectionNameView.setText(pack.getMarketName());
+        weightView.setText(String.format(getString(R.string.weight_format), pack.getMinWeight(), pack.getMaxWeight()));
+        minSendPackageView.setText(String.format(getString(R.string.count_of_day), pack.getDailyMinPackages()));
     }
 }

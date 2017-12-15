@@ -5,6 +5,9 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 
 public class ManifestUtils {
+    private ManifestUtils() {
+    }
+
     public static String getValueByKey(Context context, String key) {
         String value = "";
         try {
@@ -20,9 +23,7 @@ public class ManifestUtils {
     }
 
     private static ApplicationInfo getApplicationInfo(Context context) throws PackageManager.NameNotFoundException {
-        ApplicationInfo applicationInfo = context.getPackageManager()
-                .getApplicationInfo(context.getPackageName(),
-                        PackageManager.GET_META_DATA);
-        return applicationInfo;
+        return context.getPackageManager().getApplicationInfo(context.getPackageName(),
+                PackageManager.GET_META_DATA);
     }
 }

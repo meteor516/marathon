@@ -14,4 +14,5 @@
     <string name="error_count">寄件数量必须大于或等于20</string>
     <string name="error_weight">请输入重量</string>
     <string name="error_name">请输入正确的寄件人</string>
+    <string name="input_info">请填写寄件信息</string>
 </resources>

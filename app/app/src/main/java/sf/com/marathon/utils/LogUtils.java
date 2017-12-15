@@ -1,31 +1,16 @@
 package sf.com.marathon.utils;
 
-/*
- * Copyright (c) 2013. wyouflf (wyouflf@gmail.com)
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 import android.text.TextUtils;
 import android.util.Log;
 
 /**
  * Log工具，类似android.util.Log。
- * tag自动产生，格式: customTagPrefix:className.methodName(L:lineNumber),
+ * tag自动产生，格式: CUSTOM_TAG_PREFIX:className.methodName(L:lineNumber),
  * customTagPrefix为空时只输出：className.methodName(L:lineNumber)。
  */
 public class LogUtils {
 
-    private static final String customTagPrefix = "";
+    private static final String CUSTOM_TAG_PREFIX = "";
 
     private LogUtils() {
     }
@@ -35,7 +20,7 @@ public class LogUtils {
         String tag = "%s.%s(L:%d)";
         String callerClazzName = caller.getClassName();
         tag = String.format(tag, callerClazzName, caller.getMethodName(), caller.getLineNumber());
-        tag = TextUtils.isEmpty(customTagPrefix) ? tag : customTagPrefix + ":" + tag;
+        tag = TextUtils.isEmpty(CUSTOM_TAG_PREFIX) ? tag : String.format("%s:%s", CUSTOM_TAG_PREFIX, tag);
         return tag;
     }
 
@@ -63,66 +48,66 @@ public class LogUtils {
         Log.e(tag, content, tr);
     }
 
-    public static void i(String content) {
-        String tag = generateTag();
-
-        Log.i(tag, content);
-    }
-
-    public static void i(String content, Throwable tr) {
-        String tag = generateTag();
-
-        Log.i(tag, content, tr);
-    }
-
-    public static void v(String content) {
-        String tag = generateTag();
-
-        Log.v(tag, content);
-    }
-
-    public static void v(String content, Throwable tr) {
-        String tag = generateTag();
-
-        Log.v(tag, content, tr);
-    }
-
-    public static void w(String content) {
-        String tag = generateTag();
-
-        Log.w(tag, content);
-    }
-
-    public static void w(String content, Throwable tr) {
-        String tag = generateTag();
-
-        Log.w(tag, content, tr);
-    }
-
-    public static void w(Throwable tr) {
-        String tag = generateTag();
-
-        Log.w(tag, tr);
-    }
-
-
-    public static void wtf(String content) {
-        String tag = generateTag();
-
-        Log.wtf(tag, content);
-    }
-
-    public static void wtf(String content, Throwable tr) {
-        String tag = generateTag();
-
-        Log.wtf(tag, content, tr);
-    }
-
-    public static void wtf(Throwable tr) {
-        String tag = generateTag();
-
-        Log.wtf(tag, tr);
-    }
+//    public static void i(String content) {
+//        String tag = generateTag();
+//
+//        Log.i(tag, content);
+//    }
+//
+//    public static void i(String content, Throwable tr) {
+//        String tag = generateTag();
+//
+//        Log.i(tag, content, tr);
+//    }
+//
+//    public static void v(String content) {
+//        String tag = generateTag();
+//
+//        Log.v(tag, content);
+//    }
+//
+//    public static void v(String content, Throwable tr) {
+//        String tag = generateTag();
+//
+//        Log.v(tag, content, tr);
+//    }
+//
+//    public static void w(String content) {
+//        String tag = generateTag();
+//
+//        Log.w(tag, content);
+//    }
+//
+//    public static void w(String content, Throwable tr) {
+//        String tag = generateTag();
+//
+//        Log.w(tag, content, tr);
+//    }
+//
+//    public static void w(Throwable tr) {
+//        String tag = generateTag();
+//
+//        Log.w(tag, tr);
+//    }
+//
+//
+//    public static void wtf(String content) {
+//        String tag = generateTag();
+//
+//        Log.wtf(tag, content);
+//    }
+//
+//    public static void wtf(String content, Throwable tr) {
+//        String tag = generateTag();
+//
+//        Log.wtf(tag, content, tr);
+//    }
+//
+//    public static void wtf(Throwable tr) {
+//        String tag = generateTag();
+//
+//        Log.wtf(tag, tr);
+//    }
 
 }
 

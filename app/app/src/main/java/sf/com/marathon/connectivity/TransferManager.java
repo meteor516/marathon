@@ -1,8 +1,10 @@
 package sf.com.marathon.connectivity;
 
-import android.Manifest;
 import android.content.Context;
 import android.os.AsyncTask;
+
+import sf.com.marathon.contact.TransferResult;
+import sf.com.marathon.utils.GsonUtils;
 
 import static sf.com.marathon.utils.ManifestUtils.getValueByKey;
 
@@ -43,10 +45,17 @@ public final class TransferManager {
 
             @Override
             protected void onPostExecute(RequestResult requestResult) {
-                if (requestResult.isSuccess()) {
+                if (!requestResult.isSuccess()) {
+                    onFailedListener.onFailed(requestResult.errorMessage(), requestResult.errorCode());
+                    return;
+                }
+
+                TransferResult transferResult = GsonUtils.json2Bean(requestResult.resultAsJson(), TransferResult.class);
+                if (transferResult.isSuccess()) {
                     onSuccessListener.onSuccess(requestResult.resultAsJson());
                     return;
                 }
+
                 onFailedListener.onFailed(requestResult.errorMessage(), requestResult.errorCode());
             }
         }.execute();
