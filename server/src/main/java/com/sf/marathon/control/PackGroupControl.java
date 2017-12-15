@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static java.lang.Boolean.TRUE;
+
 @RestController
 public class PackGroupControl {
     private static final Logger logger = LoggerFactory.getLogger(PackGroupControl.class);
@@ -22,10 +24,10 @@ public class PackGroupControl {
         Result<Void> result = new Result<>();
         try {
             packGroupService.savePackGroup(customerDto);
-            result.setSuccess(Boolean.TRUE);
+            result.setIsSuccess(TRUE);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
-            result.setSuccess(false);
+            result.setIsSuccess(false);
             result.setErrorMsg(e.getMessage());
         }
         return result;
