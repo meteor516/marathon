@@ -1,7 +1,5 @@
 package com.sf.marathon.domain;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -9,11 +7,12 @@ import java.util.Date;
 public class Customer {
     @Id
     @Column(name = "id")
-    @GenericGenerator(name = "PKUUID", strategy = "uuid2")
-    @GeneratedValue(generator = "PKUUID")
+//    @GenericGenerator(name = "PKUUID", strategy = "uuid2")
+//    @GeneratedValue(generator = "PKUUID")
     private String id;
 
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = true)
+
+    @ManyToOne(cascade = CascadeType.ALL, optional = true)
     @JoinColumn(name = "group_id")//这里设置JoinColum设置了外键的名字，并且orderItem是关系维护端
     private PackGroup packGroup;
 
@@ -38,13 +37,13 @@ public class Customer {
         this.id = id;
     }
 
-    public PackGroup getPackGroup() {
-        return packGroup;
-    }
-
-    public void setPackGroup(PackGroup packGroup) {
-        this.packGroup = packGroup;
-    }
+//    public PackGroup getPackGroup() {
+//        return packGroup;
+//    }
+//
+//    public void setPackGroup(PackGroup packGroup) {
+//        this.packGroup = packGroup;
+//    }
 
     public String getUserName() {
         return userName;
