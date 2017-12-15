@@ -30,7 +30,7 @@ public class PackGroupControl {
 			packGroupService.savePackGroup(dto);
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
-			result.setSuccess(false);
+			result.setIsSuccess(false);
 			result.setErrorMsg(e.getMessage());
 		}
 		return result;

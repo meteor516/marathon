@@ -38,14 +38,24 @@ public class ProMarketBaseService implements IProMarketBaseService {
 
     public PackDto findPack(String pid) {
         PackGroup unfinishPackageGroupById = packGroupDao.findUnfinishGroup(pid).get(0);
+
+        return getPackDto(unfinishPackageGroupById);
+    }
+
+    private PackDto getPackDto(PackGroup unfinishPackageGroupById) {
         PackDto pack = new PackDto();
         pack.setBasePrice(unfinishPackageGroupById.getProMarketBase().getBasePrice());
         pack.setBaseWeight(unfinishPackageGroupById.getProMarketBase().getBaseWeight());
         pack.setBeginTime(unfinishPackageGroupById.getBeginTime());
         pack.setEndTime(unfinishPackageGroupById.getFinishTime());
         pack.setCreateTime(new Date());
-
         return pack;
+    }
+
+    @Override
+    public PackDto findPack() {
+        PackGroup unfinishPackageGroupById = packGroupDao.findOneUnfinishGroup().get(0);
+        return getPackDto(unfinishPackageGroupById);
     }
 
 

@@ -4,20 +4,20 @@ import java.io.Serializable;
 
 public class Result<T> implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    private String errorMsg;
-    private T response;
-    private Boolean isSuccess=true;
+	private static final long serialVersionUID = 1L;
+	private String errorMsg;
+	private T response;
+	private Boolean isSuccess = true;
 
-    public String getErrorMsg() {
-        return errorMsg;
-    }
+	public String getErrorMsg() {
+		return errorMsg;
+	}
 
-    public void setErrorMsg(String errorMsg) {
-        this.errorMsg = errorMsg;
-    }
+	public void setErrorMsg(String errorMsg) {
+		this.errorMsg = errorMsg;
+	}
 
-    public T getResponse() {
+	public T getResponse() {
 		return response;
 	}
 
@@ -33,11 +33,4 @@ public class Result<T> implements Serializable {
 		this.isSuccess = isSuccess;
 	}
 
-	public Boolean getSuccess() {
-        return isSuccess;
-    }
-
-    public void setSuccess(Boolean success) {
-        isSuccess = success;
-    }
 }
