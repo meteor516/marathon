@@ -81,9 +81,7 @@ public class MainActivityTest {
 
     @Test
     public void should_parse_json() {
-        String json = "{marketName=鞋服转送, dailyMinPackages=20.0, minWeight=1.5, maxWeight=5.0, basePrice=6.0, baseWeight=1.5, groupLimit=20.0, groupDuration=3.0, useRequire=1.\t每日承诺寄件量不低于20件（周六日及法定假期不要求承诺量）\n" +
-                "日发件不足20件或运费不足120元将收取最低运作费用\n" +
-                "2.\t承诺使用周期内提前终止寄件是为违约行为, beginTime=1.513349492E12, endTime=1.513346965E12, groupNum=null, finish=null, createTime=1.513331933046E12, finishTime=null, proId=1, packId=1}";   // given
+        String json = "{marketName=xiefu, dailyMinPackages=20.0, minWeight=1.5, maxWeight=5.0, basePrice=6.0, baseWeight=1.5, groupLimit=20.0, groupDuration=3.0, useRequire=yaoqiu, beginTime=1.513349492E12, endTime=1.513346965E12, groupNum=null, finish=null, createTime=1.513332232494E12, finishTime=null, proId=1, packId=1}";   // given
 
         Pack transferResult = GsonUtils.json2Bean(json, Pack.class);
         System.out.println(transferResult);

@@ -16,7 +16,7 @@ public class GsonUtils {
 
     private static Gson mGson = new GsonBuilder().disableHtmlEscaping().create();
 
-    private GsonUtils(){
+    private GsonUtils() {
 
     }
 
@@ -46,7 +46,7 @@ public class GsonUtils {
     public static <T> String array2Json(List<T> lists) {
         Type listType = new TypeToken<List<T>>() {
         }.getType();
-        return  mGson.toJson(lists, listType);
+        return mGson.toJson(lists, listType);
     }
 
     public static <T> List<T> json2Array(String result, TypeToken<List<T>> typeToken) {
