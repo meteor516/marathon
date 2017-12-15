@@ -12,6 +12,7 @@ import org.robolectric.util.ActivityController;
 
 import sf.com.marathon.beans.CollectionInformation;
 import sf.com.marathon.com.sf.marathon.shadows.ShadowHttpClient;
+import sf.com.marathon.contact.Pack;
 import sf.com.marathon.contact.ProMarketBase;
 import sf.com.marathon.contact.TransferResult;
 import sf.com.marathon.utils.GsonUtils;
@@ -80,9 +81,11 @@ public class MainActivityTest {
 
     @Test
     public void should_parse_json() {
-        String json = "{\"errorMsg\":null,\"response\":{\"marketName\":null,\"dailyMinPackages\":null,\"minWeight\":null,\"maxWeight\":null,\"basePrice\":null,\"baseWeight\":22.0,\"groupLimit\":null,\"groupDuration\":null,\"useRequire\":null,\"beginTime\":1513349492000,\"endTime\":1513346965000,\"groupNum\":null,\"finish\":null,\"createTime\":1513328514172,\"finishTime\":null},\"isSuccess\":true}";   // given
+        String json = "{marketName=鞋服转送, dailyMinPackages=20.0, minWeight=1.5, maxWeight=5.0, basePrice=6.0, baseWeight=1.5, groupLimit=20.0, groupDuration=3.0, useRequire=1.\t每日承诺寄件量不低于20件（周六日及法定假期不要求承诺量）\n" +
+                "日发件不足20件或运费不足120元将收取最低运作费用\n" +
+                "2.\t承诺使用周期内提前终止寄件是为违约行为, beginTime=1.513349492E12, endTime=1.513346965E12, groupNum=null, finish=null, createTime=1.513331933046E12, finishTime=null, proId=1, packId=1}";   // given
 
-        TransferResult transferResult = GsonUtils.json2Bean(json, TransferResult.class);
+        Pack transferResult = GsonUtils.json2Bean(json, Pack.class);
         System.out.println(transferResult);
     }
 }
