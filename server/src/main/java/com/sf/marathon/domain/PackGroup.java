@@ -2,6 +2,7 @@ package com.sf.marathon.domain;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -30,10 +31,9 @@ public class PackGroup {
     @Version
     @Column(name = "version")
     private Integer version;
-    @ManyToOne
-    @JoinColumn
-    @Column(name="pid")
-    private String pid;
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = true)
+    @JoinColumn(name = "pid")
+    private ProMarketBase proMarketBase;
 
     public String getId() {
         return id;
