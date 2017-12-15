@@ -62,12 +62,16 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
 
-                intent.putExtra("proId", 1);
-                intent.putExtra("packId", 1);
+                intent.putExtra("proId", pack.getProId());
+                intent.putExtra("packId", pack.getPackId());
 
                 startActivity(intent);
             }
         });
+
+        collectionNameView = (TextView) findViewById(R.id.collection_name_view);
+        weightView = (TextView) findViewById(R.id.weight_view);
+        minSendPackageView = (TextView) findViewById(R.id.min_send_package_view);
     }
 
     private void showMarketInformation(Pack pack) {
@@ -78,6 +82,5 @@ public class MainActivity extends Activity {
         minSendPackageView.setText(String.format(getString(R.string.count_of_day), pack.getDailyMinPackages()));
         attentionView.setText(pack.getUseRequire());
         deadLineView.setText(String.format(getString(R.string.date_format), pack.getEndTime()));
-        pack.
     }
 }

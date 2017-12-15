@@ -11,9 +11,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import chihane.jdaddressselector.BottomDialog;
+import chihane.jdaddressselector.OnAddressSelectedListener;
+import chihane.jdaddressselector.model.City;
+import chihane.jdaddressselector.model.County;
+import chihane.jdaddressselector.model.Province;
+import chihane.jdaddressselector.model.Street;
 import sf.com.marathon.R;
 import sf.com.marathon.connectivity.TransferManager;
 import sf.com.marathon.contact.SignUpBean;
+import sf.com.marathon.utils.GsonUtils;
 import sf.com.marathon.utils.StringUtils;
 import sf.com.marathon.utils.ToastUtils;
 import sf.com.marathon.utils.UrlConstants;
@@ -65,7 +72,7 @@ public class SignUpActivity extends BaseActivity {
         addressSelectView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                showAddressSelect();
             }
         });
 
@@ -75,6 +82,20 @@ public class SignUpActivity extends BaseActivity {
                 validateInformation();
             }
         });
+    }
+
+    private void showAddressSelect() {
+        BottomDialog dialog = new BottomDialog(SignUpActivity.this);
+        dialog.setCancelable(true);
+        dialog.setOnAddressSelectedListener(new OnAddressSelectedListener() {
+            @Override
+            public void onAddressSelected(Province province, City city, County county, Street street) {
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append(province.name).append(city.name).append(county == null ? "" : county.name);
+                addressSelectView.setText(stringBuilder.toString());
+            }
+        });
+        dialog.show();
     }
 
     private void validateInformation() {
@@ -99,6 +120,14 @@ public class SignUpActivity extends BaseActivity {
     }
 
     private void signUp() {
+        SignUpBean signUpBean = new SignUpBean();
+
+        signUpBean.setPackId(packId);
+        signUpBean.setGroupTime(new Date());
+        signUpBean.setRegion(addressSelectView.getText().toString() + addressEditView.getText().toString());
+        signUpBean.setUserName(deviceId(getApplicationContext()));
+        signUpBean.setProId(proId);
+
         TransferManager.buildClient(getApplicationContext(), UrlConstants.URL_SIGN_UP)
                 .withOnFailedListener(new TransferManager.OnFailedListener() {
                     @Override
@@ -109,16 +138,12 @@ public class SignUpActivity extends BaseActivity {
                 .withOnSuccessListener(new TransferManager.OnSuccessListener() {
                     @Override
                     public void onSuccess(String json) {
-                        SignUpBean signUpBean = new SignUpBean();
+                        ToastUtils.showLong(getApplicationContext(), "报名成功");
 
-                        signUpBean.setPackId(packId);
-                        signUpBean.setGroupTime(new Date());
-                        signUpBean.setRegion(addressSelectView.getText().toString() + addressEditView.getText().toString());
-                        signUpBean.setUserName(deviceId(getApplicationContext()));
-                        signUpBean.setProId(proId);
+                        finish();
                     }
                 })
-                .get();
+                .post(GsonUtils.bean2Json(signUpBean));
     }
 
     private void initUi() {

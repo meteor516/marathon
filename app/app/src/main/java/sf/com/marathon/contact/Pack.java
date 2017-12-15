@@ -20,6 +20,24 @@ public class Pack implements Serializable {
     private Byte finish;
     private Date createTime;
     private Date finishTime;
+    private String proId;
+    private String packId;
+
+    public String getProId() {
+        return proId;
+    }
+
+    public void setProId(String proId) {
+        this.proId = proId;
+    }
+
+    public String getPackId() {
+        return packId;
+    }
+
+    public void setPackId(String packId) {
+        this.packId = packId;
+    }
 
     public String getMarketName() {
         return marketName;

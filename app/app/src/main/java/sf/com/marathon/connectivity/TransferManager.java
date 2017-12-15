@@ -66,6 +66,36 @@ public final class TransferManager {
         }.execute();
     }
 
+    public void post(String json) {
+        new AsyncTask<String, String, RequestResult>() {
+            @Override
+            protected RequestResult doInBackground(String[] params) {
+                return HttpClient.httpClient().post(realUrl, params[0]);
+            }
+
+            @Override
+            protected void onPostExecute(RequestResult requestResult) {
+                if (!requestResult.isSuccess()) {
+                    onFailedListener.onFailed(requestResult.errorMessage(), requestResult.errorCode());
+                    return;
+                }
+
+                try {
+                    TransferResult transferResult = GsonUtils.json2Bean(requestResult.resultAsJson(), TransferResult.class);
+                    if (transferResult.isSuccess()) {
+                        onSuccessListener.onSuccess(transferResult.getResponse().toString());
+                        return;
+                    }
+                } catch (Exception e) {
+                    onFailedListener.onFailed("数据解析异常", requestResult.errorCode());
+                    return;
+                }
+
+                onFailedListener.onFailed(requestResult.errorMessage(), requestResult.errorCode());
+            }
+        }.execute(json);
+    }
+
     public interface OnFailedListener {
         void onFailed(String message, int errorType);
     }

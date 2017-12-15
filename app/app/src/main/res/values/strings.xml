@@ -17,4 +17,9 @@
     <string name="input_info">请填写寄件信息</string>
     <string name="sf_collection_helper">顺丰集货助手</string>
     <string name="date_format">截至日期:%s</string>
+
+    <string name="success_sign_up">报名成功！</string>
+    <string name="transpond_tip">转发给更多朋友或生成图片分享至朋友\n圈，即可加快集货进度~</string>
+    <string name="send_to_wechat_friend">发送微信好友</string>
+    <string name="share_to_friend_circle">分享至朋友圈</string>
 </resources>
