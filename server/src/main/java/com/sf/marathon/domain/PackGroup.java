@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Version;
 
 @Entity(name = "tt_pack_group")
 public class PackGroup {
@@ -12,7 +13,7 @@ public class PackGroup {
     @Id
     @Column(name = "id")
     private String id;
-    @Column(name = "Pid")
+    @Column(name = "pid")
     private String pid;
     @Column(name = "begin_time")
     private Date beginTime;
@@ -26,6 +27,9 @@ public class PackGroup {
     private Date createTime;
     @Column(name = "finish_time")
     private Date finishTime;
+    @Version
+    @Column(name = "version")
+    private int version;
 
     public String getId() {
         return id;
@@ -89,5 +93,13 @@ public class PackGroup {
 
     public void setFinishTime(Date finishTime) {
         this.finishTime = finishTime;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
     }
 }

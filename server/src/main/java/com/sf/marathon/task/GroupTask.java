@@ -6,25 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import com.sf.marathon.dao.PackGroupDao;
-import com.sf.marathon.dao.ProMarketBaseDao;
 import com.sf.marathon.domain.ProMarketBase;
+import com.sf.marathon.service.GroupTaskBiz;
+import com.sf.marathon.service.impl.ProMarketBaseService;
 
 @Component
 public class GroupTask {
 
     @Autowired
-    private ProMarketBaseDao proMarketBaseDao;
+    private ProMarketBaseService proMarketBaseService;
     @Autowired
-    private PackGroupDao packGroupDao;
+    private GroupTaskBiz groupTaskBiz;
 
     @Scheduled(fixedRate = 6000)
     public void executeGroupTask() {
-        List<ProMarketBase> list = proMarketBaseDao.findAll();
-        list.forEach(pm -> handleProMarketBase(pm));
-    }
-
-    private void handleProMarketBase(ProMarketBase pm) {
-
+        List<ProMarketBase> list = proMarketBaseService.findAll();
+        list.forEach(pm -> groupTaskBiz.handleProMarketBase(pm));
     }
 }
