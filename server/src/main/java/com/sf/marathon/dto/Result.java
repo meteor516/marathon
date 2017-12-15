@@ -22,12 +22,13 @@ public class Result<T> {
         this.response = response;
     }
 
-    public Boolean getSuccess() {
-        return isSuccess;
-    }
+	public Boolean getIsSuccess() {
+		return isSuccess;
+	}
 
-    public void setIsSuccess(Boolean success) {
-        isSuccess = success;
-    }
+	public void setIsSuccess(Boolean isSuccess) {
+		this.isSuccess = isSuccess;
+	}
+
 
 }
