@@ -1,5 +1,9 @@
 package sf.com.marathon.utils;
 
+import org.joda.time.DateTime;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -30,6 +34,10 @@ public class StringUtils {
 
     public static boolean isBiggerThanAndEquals(String integerString, int target) {
         return Integer.valueOf(integerString) >= target;
+    }
+
+    public static String getFormatDate(Date date) {
+        return new SimpleDateFormat("MM:dd").format(date);
     }
 
     private static boolean isMatch(String anyString, String integerFormatExpress) {

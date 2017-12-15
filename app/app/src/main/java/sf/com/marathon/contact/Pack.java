@@ -5,19 +5,19 @@ import java.util.Date;
 
 public class Pack implements Serializable {
     private String marketName;
-    private int dailyMinPackages;
-    private double minWeight;
-    private double maxWeight;
-    private double basePrice;
-    private double baseWeight;
-    private int groupLimit;
-    private int groupDuration;
+    private Integer dailyMinPackages;
+    private Double minWeight;
+    private Double maxWeight;
+    private Double basePrice;
+    private Double baseWeight;
+    private Integer groupLimit;
+    private Integer groupDuration;
     private String useRequire;
 
     private Date beginTime;
     private Date endTime;
-    private int groupNum;
-    private byte finish;
+    private Integer groupNum;
+    private Byte finish;
     private Date createTime;
     private Date finishTime;
 
@@ -29,59 +29,59 @@ public class Pack implements Serializable {
         this.marketName = marketName;
     }
 
-    public int getDailyMinPackages() {
+    public Integer getDailyMinPackages() {
         return dailyMinPackages;
     }
 
-    public void setDailyMinPackages(int dailyMinPackages) {
+    public void setDailyMinPackages(Integer dailyMinPackages) {
         this.dailyMinPackages = dailyMinPackages;
     }
 
-    public double getMinWeight() {
+    public Double getMinWeight() {
         return minWeight;
     }
 
-    public void setMinWeight(double minWeight) {
+    public void setMinWeight(Double minWeight) {
         this.minWeight = minWeight;
     }
 
-    public double getMaxWeight() {
+    public Double getMaxWeight() {
         return maxWeight;
     }
 
-    public void setMaxWeight(double maxWeight) {
+    public void setMaxWeight(Double maxWeight) {
         this.maxWeight = maxWeight;
     }
 
-    public double getBasePrice() {
+    public Double getBasePrice() {
         return basePrice;
     }
 
-    public void setBasePrice(double basePrice) {
+    public void setBasePrice(Double basePrice) {
         this.basePrice = basePrice;
     }
 
-    public double getBaseWeight() {
+    public Double getBaseWeight() {
         return baseWeight;
     }
 
-    public void setBaseWeight(double baseWeight) {
+    public void setBaseWeight(Double baseWeight) {
         this.baseWeight = baseWeight;
     }
 
-    public int getGroupLimit() {
+    public Integer getGroupLimit() {
         return groupLimit;
     }
 
-    public void setGroupLimit(int groupLimit) {
+    public void setGroupLimit(Integer groupLimit) {
         this.groupLimit = groupLimit;
     }
 
-    public int getGroupDuration() {
+    public Integer getGroupDuration() {
         return groupDuration;
     }
 
-    public void setGroupDuration(int groupDuration) {
+    public void setGroupDuration(Integer groupDuration) {
         this.groupDuration = groupDuration;
     }
 
@@ -109,19 +109,19 @@ public class Pack implements Serializable {
         this.endTime = endTime;
     }
 
-    public int getGroupNum() {
+    public Integer getGroupNum() {
         return groupNum;
     }
 
-    public void setGroupNum(int groupNum) {
+    public void setGroupNum(Integer groupNum) {
         this.groupNum = groupNum;
     }
 
-    public byte getFinish() {
+    public Byte getFinish() {
         return finish;
     }
 
-    public void setFinish(byte finish) {
+    public void setFinish(Byte finish) {
         this.finish = finish;
     }
 

@@ -2,6 +2,8 @@ package sf.com.marathon.utils;
 
 import org.junit.Test;
 
+import java.util.Date;
+
 import static org.fest.assertions.api.Assertions.assertThat;
 
 public class StringUtilsTest {
@@ -50,5 +52,10 @@ public class StringUtilsTest {
         assertThat(StringUtils.isBiggerThanAndEquals("11", 20)).isFalse();
         assertThat(StringUtils.isBiggerThanAndEquals("20", 20)).isTrue();
         assertThat(StringUtils.isBiggerThanAndEquals("21", 20)).isTrue();
+    }
+
+    @Test
+    public void should_get_formatted_date() {
+        assertThat(StringUtils.getFormatDate(new Date())).isEqualTo("12:15");
     }
 }

@@ -50,9 +50,14 @@ public final class TransferManager {
                     return;
                 }
 
-                TransferResult transferResult = GsonUtils.json2Bean(requestResult.resultAsJson(), TransferResult.class);
-                if (transferResult.isSuccess()) {
-                    onSuccessListener.onSuccess(requestResult.resultAsJson());
+                try {
+                    TransferResult transferResult = GsonUtils.json2Bean(requestResult.resultAsJson(), TransferResult.class);
+                    if (transferResult.isSuccess()) {
+                        onSuccessListener.onSuccess(transferResult.getResponse().toString());
+                        return;
+                    }
+                } catch (Exception e) {
+                    onFailedListener.onFailed("数据解析异常", requestResult.errorCode());
                     return;
                 }
 

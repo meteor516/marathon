@@ -13,6 +13,7 @@ import org.robolectric.util.ActivityController;
 import sf.com.marathon.beans.CollectionInformation;
 import sf.com.marathon.com.sf.marathon.shadows.ShadowHttpClient;
 import sf.com.marathon.contact.ProMarketBase;
+import sf.com.marathon.contact.TransferResult;
 import sf.com.marathon.utils.GsonUtils;
 
 import static org.fest.assertions.api.Assertions.assertThat;
@@ -75,5 +76,13 @@ public class MainActivityTest {
 
         String bean2Json = GsonUtils.bean2Json(proMarketBase);
         ShadowHttpClient.fakeResult(bean2Json);
+    }
+
+    @Test
+    public void should_parse_json() {
+        String json = "{\"errorMsg\":null,\"response\":{\"marketName\":null,\"dailyMinPackages\":null,\"minWeight\":null,\"maxWeight\":null,\"basePrice\":null,\"baseWeight\":22.0,\"groupLimit\":null,\"groupDuration\":null,\"useRequire\":null,\"beginTime\":1513349492000,\"endTime\":1513346965000,\"groupNum\":null,\"finish\":null,\"createTime\":1513328514172,\"finishTime\":null},\"isSuccess\":true}";   // given
+
+        TransferResult transferResult = GsonUtils.json2Bean(json, TransferResult.class);
+        System.out.println(transferResult);
     }
 }

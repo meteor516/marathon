@@ -15,4 +15,6 @@
     <string name="error_weight">请输入重量</string>
     <string name="error_name">请输入正确的寄件人</string>
     <string name="input_info">请填写寄件信息</string>
+    <string name="sf_collection_helper">顺丰集货助手</string>
+    <string name="date_format">截至日期:%s</string>
 </resources>

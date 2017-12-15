@@ -18,6 +18,8 @@ public class MainActivity extends Activity {
     private TextView collectionNameView;
     private TextView weightView;
     private TextView minSendPackageView;
+    private TextView attentionView;
+    private TextView deadLineView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,13 +45,15 @@ public class MainActivity extends Activity {
                     public void onFailed(String message, int errorType) {
                         ToastUtils.showLong(getApplicationContext(), message);
                     }
-                });
+                }).get();
     }
 
     private void initUi() {
         collectionNameView = findViewById(R.id.collection_name_view);
         weightView = findViewById(R.id.weight_view);
         minSendPackageView = findViewById(R.id.min_send_package_view);
+        attentionView = findViewById(R.id.attention_text_view);
+        deadLineView = findViewById(R.id.deadline_view);
 
         View joinButton = findViewById(R.id.join_view);
         joinButton.setOnClickListener(new View.OnClickListener() {
@@ -65,5 +69,7 @@ public class MainActivity extends Activity {
         collectionNameView.setText(pack.getMarketName());
         weightView.setText(String.format(getString(R.string.weight_format), pack.getMinWeight(), pack.getMaxWeight()));
         minSendPackageView.setText(String.format(getString(R.string.count_of_day), pack.getDailyMinPackages()));
+        attentionView.setText(pack.getUseRequire());
+        deadLineView.setText(String .format(getString(R.string.date_format), pack.getEndTime()));
     }
 }
