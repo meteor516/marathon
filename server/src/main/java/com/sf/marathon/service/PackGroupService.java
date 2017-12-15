@@ -1,18 +1,19 @@
 package com.sf.marathon.service;
 
+import java.util.Date;
+import java.util.UUID;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.sf.marathon.dao.CustomerDao;
 import com.sf.marathon.dao.PackGroupDao;
-import com.sf.marathon.dao.ProMarketBaseRepository;
 import com.sf.marathon.domain.Customer;
 import com.sf.marathon.domain.PackGroup;
 import com.sf.marathon.domain.ProMarketBase;
 import com.sf.marathon.dto.CustomerDto;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
-import java.util.Date;
-import java.util.UUID;
 
 @Transactional
 @Service
@@ -24,41 +25,28 @@ public class PackGroupService implements IPackGroupService {
     private CustomerDao customerDao;
 
     @Autowired
-    private ProMarketBaseRepository proMarketBaseDao;
-
-
-//    @Override
-//    public void savePackGroup(Customer customer, PackGroup packGroup) {
-//        ProMarketBase one = proMarketBaseDao.getOne("1");
-//
-//        customerDao.save(customer);
-//        packGroupDao.save(packGroup);
-//    }
+    private GroupTaskBiz groupTaskBiz;
 
     @Override
     public void savePackGroup(CustomerDto customerDto) {
-        PackGroup packGroup = packGroupDao.findUnfinishPackageGroupById(customerDto.getPackId());
+        PackGroup packGroup = packGroupDao.getOne(customerDto.getPackId());
         ProMarketBase proMarketBase = packGroup.getProMarketBase();
-        int groupLimit = proMarketBase.getGroupLimit();
-        Integer groupNum = packGroup.getGroupNum();
-        if (groupNum < groupLimit) {//over limit
-            int currentGroup = packGroup.getGroupNum() + 1;
-            if (currentGroup == groupLimit) {
-                packGroup.setFinish((byte) 1);//完成
-            }
-            packGroup.setGroupNum(currentGroup);
-            packGroupDao.save(packGroup);
-            Customer customer = genCustomer(customerDto);
-            customerDao.save(customer);
-        } else {
-            packGroup = new PackGroup();
-            packGroup.setGroupNum(1);
-            packGroup.setCreateTime(new Date());
-            ProMarketBase one = proMarketBaseDao.getOne(customerDto.getProId());
-            Customer customer = genCustomer(customerDto);
-            customerDao.save(customer);
+        Byte finish = 1;
+
+        if (finish.equals(packGroup.getFinish()) || packGroup.getGroupNum() >= proMarketBase.getGroupLimit()) {
+            packGroup = groupTaskBiz.createPackGroup(proMarketBase);
         }
 
+        packGroup.setGroupNum(packGroup.getGroupNum() + 1);
+        if (packGroup.getGroupNum() == proMarketBase.getGroupLimit()) {
+            packGroup.setFinish(finish);
+            packGroup.setFinishTime(new Date());
+        }
+        packGroupDao.save(packGroup);
+
+        Customer customer = genCustomer(customerDto);
+        customer.setPackGroup(packGroup);
+        customerDao.save(customer);
     }
 
     private Customer genCustomer(CustomerDto customerDto) {
