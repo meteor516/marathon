@@ -1,5 +1,7 @@
 package com.sf.marathon.domain;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -7,6 +9,8 @@ import java.util.Date;
 public class Customer {
     @Id
     @Column(name = "id")
+    @GenericGenerator(name = "PKUUID", strategy = "uuid2")
+    @GeneratedValue(generator = "PKUUID")
     private String id;
 
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = true)
@@ -26,4 +30,51 @@ public class Customer {
     private String address;
 
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public PackGroup getPackGroup() {
+        return packGroup;
+    }
+
+    public void setPackGroup(PackGroup packGroup) {
+        this.packGroup = packGroup;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public Date getGroupTime() {
+        return groupTime;
+    }
+
+    public void setGroupTime(Date groupTime) {
+        this.groupTime = groupTime;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 }

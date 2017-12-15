@@ -9,8 +9,7 @@ public class PackGroup {
     @Id
     @Column(name = "id")
     private String id;
-    @Column(name = "Pid")
-    private String pid;
+
     @Column(name = "begin_time")
     private Date beginTime;
     @Column(name = "end_time")
@@ -24,9 +23,9 @@ public class PackGroup {
     @Column(name = "finish_time")
     private Date finishTime;
 
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = true)
+    @ManyToOne(cascade = CascadeType.ALL, optional = true)
     @JoinColumn(name = "pid")//这里设置JoinColum设置了外键的名字，并且orderItem是关系维护端
-    private ProMarketBase customer;
+    private ProMarketBase proMarketBase;
 
     @Version
     private int version;
@@ -37,14 +36,6 @@ public class PackGroup {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getPid() {
-        return pid;
-    }
-
-    public void setPid(String pid) {
-        this.pid = pid;
     }
 
     public Date getBeginTime() {
@@ -93,5 +84,21 @@ public class PackGroup {
 
     public void setFinishTime(Date finishTime) {
         this.finishTime = finishTime;
+    }
+
+    public ProMarketBase getProMarketBase() {
+        return proMarketBase;
+    }
+
+    public void setProMarketBase(ProMarketBase proMarketBase) {
+        this.proMarketBase = proMarketBase;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
     }
 }
