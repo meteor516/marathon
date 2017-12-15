@@ -23,14 +23,10 @@ public class ProMarketBaseController {
 	
 	@RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
 	public ProMarketBase detail(@PathVariable("id") String id) {
-		
 		return null;
 	}
 	
-	@RequestMapping(value = "/offer", method = RequestMethod.POST)
-	public void offer (Long id) {
-		// TODO
-	}
+	
 	
 	
 	
