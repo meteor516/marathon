@@ -1,6 +1,6 @@
 package com.sf.marathon.control;
 
-import com.sf.marathon.Dto.CustomerDto;
+import com.sf.marathon.dto.CustomerDto;
 import com.sf.marathon.service.IPackGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
