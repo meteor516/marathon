@@ -16,9 +16,9 @@ public class PackGroup {
     @Column(name = "end_time")
     private Date endTime;
     @Column(name = "group_num")
-    private int groupNum;
+    private Integer groupNum;
     @Column(name = "finish")
-    private boolean finish;
+    private Byte finish;
     @Column(name = "create_time")
     private Date createTime;
     @Column(name = "finish_time")
@@ -63,19 +63,19 @@ public class PackGroup {
         this.endTime = endTime;
     }
 
-    public int getGroupNum() {
+    public Integer getGroupNum() {
         return groupNum;
     }
 
-    public void setGroupNum(int groupNum) {
+    public void setGroupNum(Integer groupNum) {
         this.groupNum = groupNum;
     }
 
-    public boolean isFinish() {
+    public Byte getFinish() {
         return finish;
     }
 
-    public void setFinish(boolean finish) {
+    public void setFinish(Byte finish) {
         this.finish = finish;
     }
 

@@ -3,7 +3,7 @@
 
     <stroke
         android:width="2px"
-        android:color="@color/blue" />
+        android:color="@color/abc_background_cache_hint_selector_material_dark" />
     <corners android:radius="6dp" />
 
     <!--画一个带颜色的方框作背景-->
