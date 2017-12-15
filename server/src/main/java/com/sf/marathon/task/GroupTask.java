@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import com.sf.marathon.domain.ProMarketBase;
 import com.sf.marathon.service.GroupTaskBiz;
-import com.sf.marathon.service.ProMarketBaseService;
+import com.sf.marathon.service.impl.ProMarketBaseService;
 
 @Component
 public class GroupTask {

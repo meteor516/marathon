@@ -1,4 +1,4 @@
-package com.sf.marathon.service;
+package com.sf.marathon.service.impl;
 
 import com.sf.marathon.dao.ProMarketBaseRepository;
 import com.sf.marathon.domain.ProMarketBase;

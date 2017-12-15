@@ -1,4 +1,4 @@
-package com.sf.marathon.service;
+package com.sf.marathon.service.impl;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import com.sf.marathon.dao.PackGroupDao;
 import com.sf.marathon.domain.PackGroup;
 import com.sf.marathon.domain.ProMarketBase;
+import com.sf.marathon.service.GroupTaskBiz;
 
 @Component
 @Transactional
