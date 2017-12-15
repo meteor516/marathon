@@ -22,7 +22,6 @@ public class GroupTaskBizImpl implements GroupTaskBiz {
     private PackGroupDao packGroupDao;
 
     @Override
-    @Transactional
     public void handleProMarketBase(ProMarketBase pm) {
         PackGroup pg = packGroupDao.findUnfinishGroup(pm.getId());
         if (pg == null) {
@@ -32,7 +31,8 @@ public class GroupTaskBizImpl implements GroupTaskBiz {
         }
     }
 
-    private void createPackGroup(ProMarketBase pm) {
+    @Override
+    public void createPackGroup(ProMarketBase pm) {
         PackGroup pg = new PackGroup();
         pg.setId(UUID.randomUUID().toString());
         pg.setPid(pm.getId());
