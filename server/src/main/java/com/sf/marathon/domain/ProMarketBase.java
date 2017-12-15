@@ -30,14 +30,17 @@ public class ProMarketBase {
     private double baseWeight;
 
     //成团人数
-
+    @Column(name = "GROUP_LIMIT")
     private int groupLimit;
 
     //有效时间
+    @Column(name = "GROUP_DURATION")
     private int groupDuration;
 
     //使用要求
+    @Column(name = "USE REQUIRE")
     private String useRequire;
+
 
     public String getId() {
         return id;

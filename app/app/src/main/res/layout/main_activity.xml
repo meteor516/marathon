@@ -3,10 +3,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/test_text_view"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/name_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="36dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/combined_shape" />
+
+        <TextView
+            android:id="@+id/collection_name_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/important_text"
+            android:textSize="@dimen/x40" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/test" />
+        android:layout_below="@+id/name_title_layout">
+
+        <TextView
+            android:id="@+id/weight_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/min_send_package_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
 
 </RelativeLayout>

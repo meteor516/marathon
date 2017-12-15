@@ -1,6 +1,8 @@
 package sf.com.marathon.utils;
 
 public class StringUtils {
+    private StringUtils() {
+    }
 
     public static boolean isEmpty(String anyString) {
         return anyString == null || anyString.equals("");
