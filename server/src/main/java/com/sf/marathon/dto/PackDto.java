@@ -1,7 +1,6 @@
 package com.sf.marathon.dto;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class PackDto implements Serializable {
 
@@ -17,13 +16,11 @@ public class PackDto implements Serializable {
     private Integer groupDuration;
     private String useRequire;
 
-    private Date beginTime;
-    private Date endTime;
+    private String beginTime;
+    private String endTime;
     private Integer groupNum;
     private Byte finish;
-    private Date createTime;
-    private Date finishTime;
-    
+
     private String proId;
     private String packId;
     
@@ -116,19 +113,19 @@ public class PackDto implements Serializable {
         this.useRequire = useRequire;
     }
 
-    public Date getBeginTime() {
+    public String getBeginTime() {
         return beginTime;
     }
 
-    public void setBeginTime(Date beginTime) {
+    public void setBeginTime(String beginTime) {
         this.beginTime = beginTime;
     }
 
-    public Date getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 
@@ -148,20 +145,5 @@ public class PackDto implements Serializable {
         this.finish = finish;
     }
 
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getFinishTime() {
-        return finishTime;
-    }
-
-    public void setFinishTime(Date finishTime) {
-        this.finishTime = finishTime;
-    }
 
 }

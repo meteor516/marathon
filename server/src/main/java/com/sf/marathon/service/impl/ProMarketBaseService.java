@@ -6,17 +6,18 @@ import com.sf.marathon.domain.PackGroup;
 import com.sf.marathon.domain.ProMarketBase;
 import com.sf.marathon.dto.PackDto;
 import com.sf.marathon.service.IProMarketBaseService;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 @Service
 public class ProMarketBaseService implements IProMarketBaseService {
+    public static final String DATE_FORMATE = "MM月dd日";
     @Autowired
     private ProMarketBaseRepository proMarketBaseRepository;
 
@@ -44,20 +45,21 @@ public class ProMarketBaseService implements IProMarketBaseService {
 
     private PackDto getPackDto(PackGroup unfinishPackageGroupById) {
         PackDto pack = new PackDto();
-        pack.setPackId(unfinishPackageGroupById.getProMarketBase().getId());
+        ProMarketBase proMarketBase = unfinishPackageGroupById.getProMarketBase();
+        pack.setPackId(proMarketBase.getId());
         pack.setProId(unfinishPackageGroupById.getId());
-        pack.setMarketName(unfinishPackageGroupById.getProMarketBase().getMarketName());
-        pack.setDailyMinPackages(unfinishPackageGroupById.getProMarketBase().getDailyMinPackages());
-        pack.setMinWeight(unfinishPackageGroupById.getProMarketBase().getMinWeight());
-        pack.setMaxWeight(unfinishPackageGroupById.getProMarketBase().getMaxWeight());
-        pack.setGroupLimit(unfinishPackageGroupById.getProMarketBase().getGroupLimit());
-        pack.setGroupDuration(unfinishPackageGroupById.getProMarketBase().getGroupDuration());
-        pack.setUseRequire(unfinishPackageGroupById.getProMarketBase().getUseRequire());
-        pack.setBasePrice(unfinishPackageGroupById.getProMarketBase().getBasePrice());
-        pack.setBaseWeight(unfinishPackageGroupById.getProMarketBase().getBaseWeight());
-        pack.setBeginTime(unfinishPackageGroupById.getBeginTime());
-        pack.setEndTime(unfinishPackageGroupById.getFinishTime());
-        pack.setCreateTime(new Date());
+        pack.setMarketName(proMarketBase.getMarketName());
+        pack.setDailyMinPackages(proMarketBase.getDailyMinPackages());
+        pack.setMinWeight(proMarketBase.getMinWeight());
+        pack.setMaxWeight(proMarketBase.getMaxWeight());
+        pack.setGroupLimit(proMarketBase.getGroupLimit());
+        pack.setGroupDuration(proMarketBase.getGroupDuration());
+        pack.setUseRequire(proMarketBase.getUseRequire());
+        pack.setBasePrice(proMarketBase.getBasePrice());
+        pack.setBaseWeight(proMarketBase.getBaseWeight());
+
+        pack.setBeginTime(new DateTime(unfinishPackageGroupById.getBeginTime()).toString(DATE_FORMATE));
+        pack.setEndTime(new DateTime(unfinishPackageGroupById.getEndTime()).toString(DATE_FORMATE));
         return pack;
     }
 
