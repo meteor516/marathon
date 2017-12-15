@@ -2,9 +2,12 @@ package com.sf.marathon.domain;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Version;
 
 @Entity(name = "tt_pack_group")
@@ -13,8 +16,6 @@ public class PackGroup {
     @Id
     @Column(name = "id")
     private String id;
-    @Column(name = "Pid")
-    private String pid;
     @Column(name = "begin_time")
     private Date beginTime;
     @Column(name = "end_time")
@@ -37,14 +38,6 @@ public class PackGroup {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getPid() {
-        return pid;
-    }
-
-    public void setPid(String pid) {
-        this.pid = pid;
     }
 
     public Date getBeginTime() {
