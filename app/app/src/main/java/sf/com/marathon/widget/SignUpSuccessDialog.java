@@ -8,8 +8,6 @@ import android.view.View;
 import sf.com.marathon.R;
 
 public class SignUpSuccessDialog  extends Dialog{
-
-
     private View sendView;
     private View shareView;
 

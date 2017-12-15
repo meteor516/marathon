@@ -14,14 +14,29 @@ public class Pack implements Serializable {
     private Integer groupDuration;
     private String useRequire;
 
-    private Date beginTime;
-    private Date endTime;
+    private String beginTime;
+    private String endTime;
     private Integer groupNum;
     private Byte finish;
-    private Date createTime;
-    private Date finishTime;
+
     private String proId;
     private String packId;
+
+    public String getBeginTime() {
+        return beginTime;
+    }
+
+    public void setBeginTime(String beginTime) {
+        this.beginTime = beginTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
 
     public String getProId() {
         return proId;
@@ -111,22 +126,6 @@ public class Pack implements Serializable {
         this.useRequire = useRequire;
     }
 
-    public Date getBeginTime() {
-        return beginTime;
-    }
-
-    public void setBeginTime(Date beginTime) {
-        this.beginTime = beginTime;
-    }
-
-    public Date getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
-    }
-
     public Integer getGroupNum() {
         return groupNum;
     }
@@ -141,21 +140,5 @@ public class Pack implements Serializable {
 
     public void setFinish(Byte finish) {
         this.finish = finish;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getFinishTime() {
-        return finishTime;
-    }
-
-    public void setFinishTime(Date finishTime) {
-        this.finishTime = finishTime;
     }
 }

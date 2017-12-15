@@ -9,6 +9,12 @@ public class RequestResult {
     private int errorCode;
     private String errorMessage;
 
+
+    private RequestResult() {
+
+    }
+
+
     public static RequestResult success(String resultAsJson) {
         RequestResult requestResult = new RequestResult();
         requestResult.isSuccess = true;
@@ -23,9 +29,6 @@ public class RequestResult {
         requestResult.errorMessage = errorMessage;
 
         return requestResult;
-    }
-
-    private RequestResult() {
     }
 
     public boolean isSuccess() {
