@@ -3,16 +3,19 @@ package sf.com.marathon.com.sf.marathon.shadows;
 import org.robolectric.annotation.Implementation;
 import org.robolectric.annotation.Implements;
 
-import okhttp3.OkHttpClient;
+import sf.com.marathon.connectivity.HttpClient;
 
-@Implements(OkHttpClient.class)
+@Implements(HttpClient.class)
 public class ShadowHttpClient {
-    private static String requestUrl;
+    public static String requestUrl;
     private static String requestParameter;
+    private static String responseResultAsJson;
+
 
     @Implementation
-    public void get() {
-
+    public String get(String requestUrl) {
+        ShadowHttpClient.requestUrl = requestUrl;
+        return responseResultAsJson;
     }
 
     @Implementation
@@ -28,8 +31,13 @@ public class ShadowHttpClient {
         ShadowHttpClient.requestParameter = requestParameter;
     }
 
+    public static void fakeResult(String repsonseResultAsJson) {
+        ShadowHttpClient.responseResultAsJson = repsonseResultAsJson;
+    }
+
     public void reset() {
         requestParameter = null;
         requestUrl = null;
+        responseResultAsJson = null;
     }
 }

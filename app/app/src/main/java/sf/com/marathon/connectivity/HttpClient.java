@@ -27,7 +27,7 @@ public class HttpClient {
     public String get(String url) {
         Request request = new Request.Builder().url(url).build();
 
-        Response response = null;
+        Response response;
         try {
             response = execute(request);
             if (response.isSuccessful()) {

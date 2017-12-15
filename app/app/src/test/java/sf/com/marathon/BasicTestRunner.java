@@ -9,6 +9,9 @@ import org.robolectric.manifest.AndroidManifest;
 import java.util.ArrayList;
 import java.util.List;
 
+import sf.com.marathon.com.sf.marathon.shadows.ShadowHttpClient;
+import sf.com.marathon.connectivity.HttpClient;
+
 public class BasicTestRunner extends RobolectricGradleTestRunner {
     public BasicTestRunner(Class<?> klass) throws InitializationError {
         super(klass);
@@ -31,8 +34,10 @@ public class BasicTestRunner extends RobolectricGradleTestRunner {
     }
 
     private List<String> instrumentClasses() {
-        List<String> arrayList = new ArrayList();
+        List<String> shadowedClassName = new ArrayList();
 
-        return arrayList;
+        shadowedClassName.add(HttpClient.class.getName());
+
+        return shadowedClassName;
     }
 }
