@@ -12,6 +12,7 @@ import org.robolectric.util.ActivityController;
 
 import sf.com.marathon.beans.CollectionInformation;
 import sf.com.marathon.com.sf.marathon.shadows.ShadowHttpClient;
+import sf.com.marathon.connectivity.TransferManager;
 import sf.com.marathon.contact.Pack;
 import sf.com.marathon.contact.ProMarketBase;
 import sf.com.marathon.contact.TransferResult;
@@ -81,7 +82,7 @@ public class MainActivityTest {
 
     @Test
     public void should_parse_json() {
-        String json = "{marketName=xiefu, dailyMinPackages=20.0, minWeight=1.5, maxWeight=5.0, basePrice=6.0, baseWeight=1.5, groupLimit=20.0, groupDuration=3.0, useRequire=yaoqiu, beginTime=1.513349492E12, endTime=1.513346965E12, groupNum=null, finish=null, createTime=1.513332232494E12, finishTime=null, proId=1, packId=1}";   // given
+        String json = "{marketName=xiefu, dailyMinPackages=20.0, minWeight=1.5, maxWeight=5.0, basePrice=6.0, baseWeight=1.5, groupLimit=20.0, groupDuration=3.0, useRequire=yaoqiu, beginTime=12月15日, endTime=12月16日, groupNum=null, finish=null, proId=1, packId=1}";   // given
 
         Pack transferResult = GsonUtils.json2Bean(json, Pack.class);
         System.out.println(transferResult);

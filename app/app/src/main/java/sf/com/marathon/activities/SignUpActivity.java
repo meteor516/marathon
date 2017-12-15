@@ -26,7 +26,6 @@ import sf.com.marathon.utils.ToastUtils;
 import sf.com.marathon.utils.UrlConstants;
 import sf.com.marathon.widget.SignUpSuccessDialog;
 
-import static sf.com.marathon.utils.DeviceUtil.deviceId;
 import static sf.com.marathon.utils.StringUtils.isBiggerThanAndEquals;
 import static sf.com.marathon.utils.StringUtils.isNotEmpty;
 
@@ -52,8 +51,6 @@ public class SignUpActivity extends BaseActivity {
         initUi();
         initListener();
         extractValue();
-
-        signUp();
     }
 
     private void extractValue() {
@@ -126,7 +123,7 @@ public class SignUpActivity extends BaseActivity {
         signUpBean.setPackId(packId);
         signUpBean.setGroupTime(new Date());
         signUpBean.setRegion(addressSelectView.getText().toString() + addressEditView.getText().toString());
-        signUpBean.setUserName(deviceId(getApplicationContext()));
+        signUpBean.setUserName("user");
         signUpBean.setProId(proId);
 
         TransferManager.buildClient(getApplicationContext(), UrlConstants.URL_SIGN_UP)
@@ -155,7 +152,7 @@ public class SignUpActivity extends BaseActivity {
                                 signUpSuccessDialog.dismiss();
                             }
                         });
-                        
+
                         finish();
                     }
                 })
