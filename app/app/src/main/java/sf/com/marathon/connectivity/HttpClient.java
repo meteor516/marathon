@@ -33,7 +33,7 @@ public class HttpClient {
                     ? RequestResult.success(response.body().string())
                     : RequestResult.failed(-1, "服务器异常");
         } catch (IOException e) {
-            LogUtils.e(e.getMessage());
+            LogUtils.e(e.getMessage(),e);
         }
 
         return RequestResult.UN_KNOWN;

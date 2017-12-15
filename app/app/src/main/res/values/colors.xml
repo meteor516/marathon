@@ -11,4 +11,6 @@
     <color name="gray_divider">#E6E6E6</color>
     <color name="gray_text">#B2B2B2</color>
     <color name="black">#000000</color>
+    <color name="green_button">#09BB07</color>
+    <color name="transparent">#00000000</color>
 </resources>

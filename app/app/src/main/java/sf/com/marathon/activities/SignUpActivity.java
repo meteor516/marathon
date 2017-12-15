@@ -10,6 +10,12 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import chihane.jdaddressselector.BottomDialog;
+import chihane.jdaddressselector.OnAddressSelectedListener;
+import chihane.jdaddressselector.model.City;
+import chihane.jdaddressselector.model.County;
+import chihane.jdaddressselector.model.Province;
+import chihane.jdaddressselector.model.Street;
 import sf.com.marathon.R;
 import sf.com.marathon.connectivity.TransferManager;
 import sf.com.marathon.utils.StringUtils;
@@ -44,7 +50,7 @@ public class SignUpActivity extends BaseActivity {
         addressSelectView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                showAddressSelect();
             }
         });
 
@@ -54,6 +60,20 @@ public class SignUpActivity extends BaseActivity {
                 validateInformation();
             }
         });
+    }
+
+    private void showAddressSelect() {
+        BottomDialog dialog = new BottomDialog(SignUpActivity.this);
+        dialog.setCancelable(true);
+        dialog.setOnAddressSelectedListener(new OnAddressSelectedListener() {
+            @Override
+            public void onAddressSelected(Province province, City city, County county, Street street) {
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append(province.name).append(city.name).append(county == null?"":county.name);
+                addressSelectView.setText(stringBuilder.toString());
+            }
+        });
+        dialog.show();
     }
 
     private void validateInformation() {
