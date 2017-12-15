@@ -10,7 +10,7 @@ public class ShadowHttpClient {
     public static String requestUrl;
     private static String requestParameter;
     private static String responseResultAsJson;
-
+    private static String errorMessage;
 
     @Implementation
     public String get(String requestUrl) {
@@ -35,9 +35,13 @@ public class ShadowHttpClient {
         ShadowHttpClient.responseResultAsJson = repsonseResultAsJson;
     }
 
-    public void reset() {
+    public static void reset() {
         requestParameter = null;
         requestUrl = null;
         responseResultAsJson = null;
+    }
+
+    public static void fakeErrorMessage(String errorMessage) {
+        ShadowHttpClient.errorMessage = errorMessage;
     }
 }

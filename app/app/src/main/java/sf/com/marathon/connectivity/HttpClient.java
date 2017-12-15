@@ -24,21 +24,17 @@ public class HttpClient {
         return httpClient;
     }
 
-    public String get(String url) {
-        Request request = new Request.Builder().url(url).build();
-
-        Response response;
+    public RequestResult get(String url) {
         try {
-            response = execute(request);
-            if (response.isSuccessful()) {
-                return response.body().string();
-            } else {
-//            throw new IOException("Unexpected code " + response);
-            }} catch (IOException e) {
+            Response response = execute(new Request.Builder().url(url).build());
+            return response.isSuccessful()
+                    ? RequestResult.success(response.body().string())
+                    : RequestResult.failed(-1, "服务器异常");
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return "";
+        return RequestResult.UN_KNOWN;
     }
 
 

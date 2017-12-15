@@ -24,6 +24,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/weight_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/name_title_layout">
@@ -38,5 +39,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y228"
+        android:layout_below="@+id/weight_layout"
+        android:background="@drawable/home" />
 
 </RelativeLayout>
