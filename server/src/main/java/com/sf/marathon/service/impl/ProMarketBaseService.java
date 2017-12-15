@@ -44,6 +44,13 @@ public class ProMarketBaseService implements IProMarketBaseService {
 
     private PackDto getPackDto(PackGroup unfinishPackageGroupById) {
         PackDto pack = new PackDto();
+        pack.setMarketName(unfinishPackageGroupById.getProMarketBase().getMarketName());
+        pack.setDailyMinPackages(unfinishPackageGroupById.getProMarketBase().getDailyMinPackages());
+        pack.setMinWeight(unfinishPackageGroupById.getProMarketBase().getMinWeight());
+        pack.setMaxWeight(unfinishPackageGroupById.getProMarketBase().getMaxWeight());
+        pack.setGroupLimit(unfinishPackageGroupById.getProMarketBase().getGroupLimit());
+        pack.setGroupDuration(unfinishPackageGroupById.getProMarketBase().getGroupDuration());
+        pack.setUseRequire(unfinishPackageGroupById.getProMarketBase().getUseRequire());
         pack.setBasePrice(unfinishPackageGroupById.getProMarketBase().getBasePrice());
         pack.setBaseWeight(unfinishPackageGroupById.getProMarketBase().getBaseWeight());
         pack.setBeginTime(unfinishPackageGroupById.getBeginTime());
