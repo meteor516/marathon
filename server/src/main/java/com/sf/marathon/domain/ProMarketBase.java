@@ -6,41 +6,40 @@ import javax.persistence.Id;
 
 @Entity(name = "tm_pro_market_base")
 public class ProMarketBase {
-    //专业市场ID
+    // 专业市场ID
     @Id
     @Column(name = "MKT_ID")
     private String id;
-    //市场外部名称
+    // 市场外部名称
     @Column(name = "MKT_NAME_SHOW")
     private String marketName;
-    //单客日均最小件量
+    // 单客日均最小件量
     @Column(name = "DAILY_MIN_PACKAGES")
-    private int dailyMinPackages;
-    //重量区间（最小）
+    private Integer dailyMinPackages;
+    // 重量区间（最小）
     @Column(name = "WEIGHT_MIN")
-    private double minWeight;
-    //重量区间（最大）
+    private Double minWeight;
+    // 重量区间（最大）
     @Column(name = "WEIGHT_MAX")
-    private double maxWeight;
-    //首重价格
+    private Double maxWeight;
+    // 首重价格
     @Column(name = "BASE_PRICE")
-    private double basePrice;
-    //首重重量
+    private Double basePrice;
+    // 首重重量
     @Column(name = "BASE_WEIGHT")
-    private double baseWeight;
+    private Double baseWeight;
 
-    //成团人数
+    // 成团人数
     @Column(name = "GROUP_LIMIT")
-    private int groupLimit;
+    private Integer groupLimit;
 
-    //有效时间
+    // 有效时间
     @Column(name = "GROUP_DURATION")
-    private int groupDuration;
+    private Integer groupDuration;
 
-    //使用要求
-    @Column(name = "USE REQUIRE")
+    // 使用要求
+    @Column(name = "USE_REQUIRE")
     private String useRequire;
-
 
     public String getId() {
         return id;
@@ -58,59 +57,59 @@ public class ProMarketBase {
         this.marketName = marketName;
     }
 
-    public int getDailyMinPackages() {
+    public Integer getDailyMinPackages() {
         return dailyMinPackages;
     }
 
-    public void setDailyMinPackages(int dailyMinPackages) {
+    public void setDailyMinPackages(Integer dailyMinPackages) {
         this.dailyMinPackages = dailyMinPackages;
     }
 
-    public double getMinWeight() {
+    public Double getMinWeight() {
         return minWeight;
     }
 
-    public void setMinWeight(double minWeight) {
+    public void setMinWeight(Double minWeight) {
         this.minWeight = minWeight;
     }
 
-    public double getMaxWeight() {
+    public Double getMaxWeight() {
         return maxWeight;
     }
 
-    public void setMaxWeight(double maxWeight) {
+    public void setMaxWeight(Double maxWeight) {
         this.maxWeight = maxWeight;
     }
 
-    public double getBasePrice() {
+    public Double getBasePrice() {
         return basePrice;
     }
 
-    public void setBasePrice(double basePrice) {
+    public void setBasePrice(Double basePrice) {
         this.basePrice = basePrice;
     }
 
-    public double getBaseWeight() {
+    public Double getBaseWeight() {
         return baseWeight;
     }
 
-    public void setBaseWeight(double baseWeight) {
+    public void setBaseWeight(Double baseWeight) {
         this.baseWeight = baseWeight;
     }
 
-    public int getGroupLimit() {
+    public Integer getGroupLimit() {
         return groupLimit;
     }
 
-    public void setGroupLimit(int groupLimit) {
+    public void setGroupLimit(Integer groupLimit) {
         this.groupLimit = groupLimit;
     }
 
-    public int getGroupDuration() {
+    public Integer getGroupDuration() {
         return groupDuration;
     }
 
-    public void setGroupDuration(int groupDuration) {
+    public void setGroupDuration(Integer groupDuration) {
         this.groupDuration = groupDuration;
     }
 
