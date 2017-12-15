@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sf.marathon.domain.Pack;
 import com.sf.marathon.domain.ProMarketBase;
-import com.sf.marathon.service.impl.PackService;
+import com.sf.marathon.service.impl.ProMarketBaseService;
 @RestController
 public class ProMarketBaseController {
 	
 	@Autowired
-	public PackService packService;
+	public ProMarketBaseService proMarketBaseService;
 
 	@RequestMapping(value = "/list/{page}/{pageSize}", method = RequestMethod.GET)
 	public Page<Pack> list(@PathVariable("page")int page, @PathVariable("pageSize")int pageSize) {
