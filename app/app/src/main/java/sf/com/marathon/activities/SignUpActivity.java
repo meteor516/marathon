@@ -24,6 +24,7 @@ import sf.com.marathon.utils.GsonUtils;
 import sf.com.marathon.utils.StringUtils;
 import sf.com.marathon.utils.ToastUtils;
 import sf.com.marathon.utils.UrlConstants;
+import sf.com.marathon.widget.SignUpSuccessDialog;
 
 import static sf.com.marathon.utils.DeviceUtil.deviceId;
 import static sf.com.marathon.utils.StringUtils.isBiggerThanAndEquals;
@@ -140,7 +141,21 @@ public class SignUpActivity extends BaseActivity {
                     public void onSuccess(String json) {
                         ToastUtils.showLong(getApplicationContext(), "报名成功");
 
+                        final SignUpSuccessDialog signUpSuccessDialog = new SignUpSuccessDialog(getApplicationContext());
+                        signUpSuccessDialog.show();
+                        signUpSuccessDialog.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                signUpSuccessDialog.dismiss();
 
+                            }
+                        }, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                signUpSuccessDialog.dismiss();
+                            }
+                        });
+                        
                         finish();
                     }
                 })
