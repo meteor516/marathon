@@ -24,6 +24,7 @@ public class ProMarketBaseController {
 	
 	@RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
 	public ProMarketBase detail(@PathVariable("id") String id) {
+		
 		return null;
 	}
 	

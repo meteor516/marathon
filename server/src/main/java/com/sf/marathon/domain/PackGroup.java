@@ -9,8 +9,6 @@ public class PackGroup {
     @Id
     @Column(name = "id")
     private String id;
-    @Column(name = "Pid")
-    private String pid;
     @Column(name = "begin_time")
     private Date beginTime;
     @Column(name = "end_time")
@@ -37,14 +35,6 @@ public class PackGroup {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getPid() {
-        return pid;
-    }
-
-    public void setPid(String pid) {
-        this.pid = pid;
     }
 
     public Date getBeginTime() {
