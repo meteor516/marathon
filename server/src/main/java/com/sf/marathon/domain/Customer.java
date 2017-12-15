@@ -7,10 +7,7 @@ import java.util.Date;
 public class Customer {
     @Id
     @Column(name = "id")
-//    @GenericGenerator(name = "PKUUID", strategy = "uuid2")
-//    @GeneratedValue(generator = "PKUUID")
     private String id;
-
 
     @ManyToOne(cascade = CascadeType.ALL, optional = true)
     @JoinColumn(name = "group_id")//这里设置JoinColum设置了外键的名字，并且orderItem是关系维护端
