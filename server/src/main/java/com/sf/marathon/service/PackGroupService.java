@@ -1,19 +1,17 @@
 package com.sf.marathon.service;
 
-import java.util.Date;
-import java.util.UUID;
-
-import javax.transaction.Transactional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.sf.marathon.dao.CustomerDao;
 import com.sf.marathon.dao.PackGroupDao;
 import com.sf.marathon.domain.Customer;
 import com.sf.marathon.domain.PackGroup;
 import com.sf.marathon.domain.ProMarketBase;
 import com.sf.marathon.dto.CustomerDto;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.util.Date;
+import java.util.UUID;
 
 @Transactional
 @Service
@@ -38,7 +36,7 @@ public class PackGroupService implements IPackGroupService {
         }
 
         packGroup.setGroupNum(packGroup.getGroupNum() + 1);
-        if (packGroup.getGroupNum() == proMarketBase.getGroupLimit()) {
+        if (packGroup.getGroupNum().equals(proMarketBase.getGroupLimit())) {
             packGroup.setFinish(finish);
             packGroup.setFinishTime(new Date());
         }
