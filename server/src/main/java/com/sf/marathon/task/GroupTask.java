@@ -16,7 +16,7 @@ public class GroupTask {
     @Autowired
     private GroupTaskBiz groupTaskBiz;
 
-    @Scheduled(fixedRate = 6000)
+    @Scheduled(initialDelay=2000,fixedRate = 6000)
     public void executeGroupTask() {
         int page = 0;
         int pageSize = 1000;
