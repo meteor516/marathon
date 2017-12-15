@@ -81,6 +81,6 @@ public class MainActivity extends Activity {
         weightView.setText(String.format(getString(R.string.weight_format), pack.getMinWeight(), pack.getMaxWeight()));
         minSendPackageView.setText(String.format(getString(R.string.count_of_day), pack.getDailyMinPackages()));
         attentionView.setText(pack.getUseRequire());
-        deadLineView.setText(String.format(getString(R.string.date_format), pack.getEndTime()));
+        deadLineView.setText(pack.getEndTime());
     }
 }

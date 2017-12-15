@@ -140,6 +140,7 @@ public class SignUpActivity extends BaseActivity {
                     public void onSuccess(String json) {
                         ToastUtils.showLong(getApplicationContext(), "报名成功");
 
+
                         finish();
                     }
                 })
