@@ -224,6 +224,11 @@
         android:layout_marginTop="@dimen/y20"
         android:text="已有13人参团" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </RelativeLayout>
     <TextView
         android:id="@+id/join_view"
         android:layout_width="match_parent"
