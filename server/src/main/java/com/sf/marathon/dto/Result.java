@@ -7,7 +7,7 @@ public class Result<T> implements Serializable {
     private static final long serialVersionUID = 1L;
     private String errorMsg;
     private T response;
-    private Boolean isSuccess;
+    private Boolean isSuccess=true;
 
     public String getErrorMsg() {
         return errorMsg;
