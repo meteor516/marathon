@@ -4,6 +4,7 @@
 
     <string name="yes">是</string>
     <string name="no">否</string>
+    <string name="collection_detail">集货详情</string>
     <string name="weight_format" formatted="false">%s-%skg</string>
     <string name="count_of_day" formatted="false">每日最低需寄%s件</string>
 </resources>

@@ -3,47 +3,243 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y168"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:singleLine="true"
+            android:text="@string/collection_detail"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </android.support.v7.widget.Toolbar>
+
     <RelativeLayout
         android:id="@+id/name_title_layout"
         android:layout_width="match_parent"
-        android:layout_height="36dp">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar">
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/y70"
             android:layout_centerInParent="true"
-            android:background="@drawable/combined_shape" />
+            android:layout_marginBottom="@dimen/y10"
+            android:layout_marginTop="@dimen/y10"
+            android:src="@drawable/combined_shape" />
 
         <TextView
             android:id="@+id/collection_name_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:text="鞋服专送080901期"
             android:textColor="@color/important_text"
-            android:textSize="@dimen/x40" />
+            android:textSize="@dimen/x55" />
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/weight_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/name_title_layout">
+        android:layout_below="@+id/name_title_layout"
+        android:layout_marginBottom="@dimen/y10"
+        android:layout_marginTop="@dimen/y10">
 
         <TextView
             android:id="@+id/weight_view"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x20"
+            android:text="1.5-5kg"
+            android:textColor="@color/black"
+            android:textSize="@dimen/x40" />
 
         <TextView
             android:id="@+id/min_send_package_view"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x50"
+            android:layout_toRightOf="@id/weight_view"
+            android:text="每日最低需寄20件"
+            android:textColor="@color/black"
+            android:textSize="@dimen/x40" />
     </RelativeLayout>
 
     <ImageView
+        android:id="@+id/poster_image_view"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y228"
+        android:layout_height="@dimen/y400"
         android:layout_below="@+id/weight_layout"
         android:background="@drawable/home" />
 
+    <ImageView
+        android:id="@+id/iv_tag"
+        android:layout_width="@dimen/x120"
+        android:layout_height="@dimen/y160"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginRight="@dimen/x34"
+        android:layout_marginTop="@dimen/y85"
+        android:src="@drawable/group_background" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/iv_tag"
+        android:layout_marginRight="@dimen/x60"
+        android:paddingTop="@dimen/y46"
+        android:text="低至￥6\n 1kg"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x18" />
+
+    <RelativeLayout
+        android:id="@+id/progress_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/poster_image_view">
+
+        <TextView
+            android:layout_marginRight="@dimen/x20"
+            android:id="@+id/rest_num_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/progress_bar"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/progress_bar"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:text="还差8人即可成团"
+            android:textColor="@color/black" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="@dimen/x20"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_toLeftOf="@+id/rest_num_view"
+            android:paddingBottom="@dimen/y20"
+            android:paddingLeft="@dimen/x18"
+            android:paddingTop="@dimen/y20" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/divider1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"
+        android:layout_below="@+id/progress_layout"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_marginRight="@dimen/x20"
+        android:background="@color/gray_divider"></View>
+
+    <TextView
+        android:id="@+id/deadline_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/divider1"
+        android:layout_marginBottom="@dimen/y20"
+        android:layout_marginLeft="@dimen/x32"
+        android:layout_marginTop="@dimen/y20"
+        android:text="截止日期：8月15日"
+        android:textColor="@color/black" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y2"
+        android:layout_below="@+id/deadline_view"
+        android:background="@color/gray_divider">
+
+    </View>
+
+    <ImageView
+        android:id="@+id/attention_image_view"
+        android:layout_width="@dimen/x70"
+        android:layout_height="@dimen/y70"
+        android:layout_below="@+id/divider2"
+        android:layout_marginLeft="@dimen/x20"
+        android:src="@drawable/attention" />
+
+    <TextView
+        android:id="@+id/attention_title_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/attention_image_view"
+        android:layout_alignTop="@+id/attention_image_view"
+        android:layout_below="@+id/divider2"
+        android:layout_toRightOf="@+id/attention_image_view"
+        android:gravity="center_vertical"
+        android:text="使用要求"
+        android:textColor="@color/black"
+        android:textSize="@dimen/x40" />
+
+
+    <TextView
+        android:id="@+id/attention_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/attention_title_view"
+        android:layout_marginLeft="@dimen/x20"
+        android:text="dafjaklfjaklfjakljfklagjhklajgklggg" />
+
+    <ImageView
+
+        android:id="@+id/players_icon_image_view"
+        android:layout_width="@dimen/x70"
+        android:layout_height="@dimen/y70"
+        android:layout_above="@+id/has_joined_num_view"
+        android:layout_marginLeft="@dimen/x20"
+        android:src="@drawable/players" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/players_icon_image_view"
+        android:layout_alignTop="@+id/players_icon_image_view"
+        android:layout_toRightOf="@+id/players_icon_image_view"
+        android:gravity="center_vertical"
+        android:text="最近参与"
+        android:textColor="@color/black"
+        android:textSize="@dimen/x40" />
+
+    <TextView
+        android:id="@+id/has_joined_num_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/join_view"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_marginTop="@dimen/y20"
+        android:text="已有13人参团" />
+
+    <TextView
+        android:id="@+id/join_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y150"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/transpond_image_view"
+        android:background="@color/important_text"
+        android:gravity="center"
+        android:text="立即参加"
+        android:textColor="#ffffff" />
+
+    <ImageView
+        android:id="@+id/transpond_image_view"
+        android:layout_width="@dimen/x150"
+        android:layout_height="@dimen/y150"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/transpond" />
 </RelativeLayout>
