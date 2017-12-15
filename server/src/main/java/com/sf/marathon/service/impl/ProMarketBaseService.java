@@ -17,7 +17,7 @@ import java.util.List;
 
 @Service
 public class ProMarketBaseService implements IProMarketBaseService {
-    public static final String DATE_FORMATE = "MM月dd日";
+    private static final String DATE_FORMATE = "MM月dd日";
     @Autowired
     private ProMarketBaseRepository proMarketBaseRepository;
 
