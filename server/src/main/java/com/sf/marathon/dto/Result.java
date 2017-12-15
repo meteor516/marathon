@@ -8,4 +8,5 @@ public class Result implements Serializable {
     private String code;
     private String cause;
 
+
 }

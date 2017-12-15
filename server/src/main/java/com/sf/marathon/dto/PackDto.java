@@ -1,9 +1,9 @@
-package com.sf.marathon.domain;
+package com.sf.marathon.dto;
 
 import java.io.Serializable;
 import java.util.Date;
 
-public class Pack implements Serializable {
+public class PackDto implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
