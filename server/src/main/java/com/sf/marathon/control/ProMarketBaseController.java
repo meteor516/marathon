@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 @RestController
 public class ProMarketBaseController {
     private static final Logger logger = LoggerFactory.getLogger(ProMarketBaseController.class);
@@ -21,11 +20,10 @@ public class ProMarketBaseController {
         Result<PackDto> result = new Result<>();
         try {
             PackDto pack = proMarketBaseService.findPack();
-            result.setResponse(pack);
-            result.setSuccess(Boolean.TRUE);
+            result.setIsSuccess(Boolean.TRUE);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
-            result.setSuccess(false);
+            result.setIsSuccess(false);
             result.setErrorMsg(e.getMessage());
         }
         return result;
