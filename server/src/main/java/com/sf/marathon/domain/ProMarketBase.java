@@ -8,7 +8,7 @@ import javax.persistence.Id;
 public class ProMarketBase {
     //专业市场ID
     @Id
-    @Column(name = "id")
+    @Column(name = "MKT_ID")
     private String id;
     //市场外部名称
     @Column(name = "MKT_NAME_SHOW")
