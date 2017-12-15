@@ -16,7 +16,7 @@ import static java.lang.Boolean.TRUE;
 public class ProMarketBaseController {
     private static final Logger logger = LoggerFactory.getLogger(ProMarketBaseController.class);
     @Autowired
-    public IProMarketBaseService proMarketBaseService;
+    private IProMarketBaseService proMarketBaseService;
 
     @RequestMapping(value = "/detail", method = RequestMethod.GET)
     public Result<PackDto> detail() {
