@@ -15,4 +15,6 @@ public interface PackGroupDao extends JpaRepository<PackGroup, String> {
     @Query(value = "select u from com.sf.marathon.domain.PackGroup u where u.proMarketBase.id=:pid and u.finish = 0")
     List<PackGroup> findUnfinishGroup(@Param("pid") String pid);
 
+    @Query(value = "select u from com.sf.marathon.domain.PackGroup u where u.finish = 0")
+    List<PackGroup> findOneUnfinishGroup();
 }
