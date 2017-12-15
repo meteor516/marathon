@@ -4,6 +4,14 @@
 
     <string name="yes">是</string>
     <string name="no">否</string>
+    <string name="collection_detail">集货详情</string>
     <string name="weight_format" formatted="false">%s-%skg</string>
     <string name="count_of_day" formatted="false">每日最低需寄%s件</string>
+    <string name="address_hint_tip">请输入详细地址,不少于5个字</string>
+    <string name="error_division">请选择行政区域</string>
+    <string name="error_address">请输入正确的地址</string>
+    <string name="error_phone">请输入正确的电话号码</string>
+    <string name="error_count">寄件数量必须大于或等于20</string>
+    <string name="error_weight">请输入重量</string>
+    <string name="error_name">请输入正确的寄件人</string>
 </resources>

@@ -1,20 +1,26 @@
 package sf.com.marathon.connectivity;
 
+import android.Manifest;
+import android.content.Context;
 import android.os.AsyncTask;
+
+import static sf.com.marathon.utils.ManifestUtils.getValueByKey;
 
 public final class TransferManager {
 
     private OnSuccessListener onSuccessListener;
     private OnFailedListener onFailedListener;
-    private String url;
+    private String realUrl;
 
     private TransferManager() {
 
     }
 
-    public static TransferManager buildClient(String url) {
+    public static TransferManager buildClient(Context context, String url) {
         TransferManager transferManager = new TransferManager();
-        transferManager.url = url;
+
+        transferManager.realUrl = getValueByKey(context, "SERVER") + url;
+
         return transferManager;
     }
 
@@ -32,8 +38,7 @@ public final class TransferManager {
         new AsyncTask<String, String, RequestResult>() {
             @Override
             protected RequestResult doInBackground(String[] params) {
-                RequestResult requestResult = HttpClient.httpClient().get(url);
-                return requestResult;
+                return HttpClient.httpClient().get(realUrl);
             }
 
             @Override

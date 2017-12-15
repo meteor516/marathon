@@ -8,6 +8,8 @@ import com.squareup.okhttp.Response;
 
 import java.io.IOException;
 
+import sf.com.marathon.utils.LogUtils;
+
 public class HttpClient {
 
     private static HttpClient httpClient;
@@ -31,20 +33,15 @@ public class HttpClient {
                     ? RequestResult.success(response.body().string())
                     : RequestResult.failed(-1, "服务器异常");
         } catch (IOException e) {
-            e.printStackTrace();
+            LogUtils.e(e.getMessage());
         }
 
         return RequestResult.UN_KNOWN;
     }
 
-
     private static Response execute(Request request) throws IOException {
         String head = request.headers().toString();
         Log.e("head", "head:" + head);
         return realHttpClient.newCall(request).execute();
-    }
-
-    public void post() {
-
     }
 }
