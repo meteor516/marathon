@@ -6,9 +6,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.annotation.Config;
-import org.robolectric.util.ActivityController;
-
-import sf.com.marathon.com.sf.marathon.BasicTestRunner;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 

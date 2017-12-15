@@ -1,9 +1,5 @@
 package sf.com.marathon.base;
 
-/**
- * Created by Darren on 2017/12/14.
- */
-
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,7 +7,6 @@ import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter {
     private List<T> mList = null;
@@ -139,8 +134,6 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter {
 
     public interface OnItemClickListener {
         void onItemClick(View view, int position);
-
-
     }
 
     protected void onItemClickListener(RecyclerView.ViewHolder holder, final int position) {
