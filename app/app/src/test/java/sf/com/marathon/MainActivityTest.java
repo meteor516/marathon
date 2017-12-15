@@ -2,6 +2,7 @@ package sf.com.marathon;
 
 import android.widget.TextView;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,6 +25,11 @@ public class MainActivityTest {
         fakeResponse();
     }
 
+    @After
+    public void tearDown() {
+        ShadowHttpClient.reset();
+    }
+
     @Test
     public void should_show_goods_information_when_on_create() {
         // given
@@ -43,6 +49,20 @@ public class MainActivityTest {
         assertThat(minSendPackageView.getText()).isEqualTo("每日最低需寄20件");
         assertThat(ShadowHttpClient.requestUrl).isEqualTo("/getCollectionInformation");
         assertThat(weightView.getText()).isEqualTo("1.5-5.0kg");
+    }
+
+
+    @Test
+    public void should_show_error_message_when_request_failed() {
+        // given
+
+        // when
+
+        // then
+    }
+
+    private void fakeRequestFailed(String errorMessage) {
+        ShadowHttpClient.fakeErrorMessage(errorMessage);
     }
 
     private void fakeResponse() {
