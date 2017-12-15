@@ -30,10 +30,7 @@ public class PackGroup {
     private Date finishTime;
     @Version
     @Column(name = "version")
-    private Integer version;
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = true)
-    @JoinColumn(name = "pid")
-    private ProMarketBase proMarketBase;
+    private int version;
 
     public String getId() {
         return id;
@@ -91,11 +88,11 @@ public class PackGroup {
         this.finishTime = finishTime;
     }
 
-    public Integer getVersion() {
+    public int getVersion() {
         return version;
     }
 
-    public void setVersion(Integer version) {
+    public void setVersion(int version) {
         this.version = version;
     }
 }

@@ -9,9 +9,9 @@ public class Customer {
     @Column(name = "id")
     private String id;
 
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = true)
-    @JoinColumn(name = "group_id")//这里设置JoinColum设置了外键的名字，并且orderItem是关系维护端
-    private PackGroup packGroup;
+//    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = true)
+//    @JoinColumn(name = "group_id")//这里设置JoinColum设置了外键的名字，并且orderItem是关系维护端
+//    private PackGroup packGroup;
 
     @Column(name = "user_name")
     private String userName;

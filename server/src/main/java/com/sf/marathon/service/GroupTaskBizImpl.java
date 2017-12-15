@@ -1,30 +1,28 @@
-package com.sf.marathon.task;
+package com.sf.marathon.service;
 
-import java.util.List;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.UUID;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import com.sf.marathon.dao.PackGroupDao;
+import com.sf.marathon.domain.PackGroup;
 import com.sf.marathon.domain.ProMarketBase;
-import com.sf.marathon.service.GroupTaskBiz;
-import com.sf.marathon.service.ProMarketBaseService;
 
 @Component
-public class GroupTask {
+@Transactional
+public class GroupTaskBizImpl implements GroupTaskBiz {
 
     @Autowired
-    private ProMarketBaseService proMarketBaseService;
-    @Autowired
-    private GroupTaskBiz groupTaskBiz;
-  
-    @Scheduled(fixedRate = 6000)
-    public void executeGroupTask() {
-        List<ProMarketBase> list = proMarketBaseService.findAll();
-        list.forEach(pm -> groupTaskBiz.handleProMarketBase(pm));
-    }
+    private PackGroupDao packGroupDao;
 
-    private void handleProMarketBase(ProMarketBase pm) {
+    @Override
+    @Transactional
+    public void handleProMarketBase(ProMarketBase pm) {
         PackGroup pg = packGroupDao.findUnfinishGroup(pm.getId());
         if (pg == null) {
             createPackGroup(pm);
@@ -45,9 +43,10 @@ public class GroupTask {
         pg.setGroupNum(0);
         pg.setFinish((byte) 0);
         pg.setCreateTime(new Date());
-        pg.setVersion(0);
+        //pg.setVersion(0);
 
         packGroupDao.save(pg);
+        //packGroupDao.flush();
     }
 
     private void checkGroupIsFinish(ProMarketBase pm, PackGroup pg) {
@@ -59,8 +58,10 @@ public class GroupTask {
             pg.setFinish((byte) 1);
             pg.setFinishTime(new Date());
             packGroupDao.save(pg);
+            // packGroupDao.flush();
 
             createPackGroup(pm);
         }
     }
+
 }
