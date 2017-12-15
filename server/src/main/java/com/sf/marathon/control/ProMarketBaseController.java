@@ -28,7 +28,7 @@ public class ProMarketBaseController {
         Result<PackDto> result = new Result<>();
         try {
             PackDto pack = proMarketBaseService.findPack(id);
-            result.setReponse(pack);
+            result.setResponse(pack);
             result.setSuccess(Boolean.TRUE);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
