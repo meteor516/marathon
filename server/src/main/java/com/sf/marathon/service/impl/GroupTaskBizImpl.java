@@ -2,6 +2,7 @@ package com.sf.marathon.service.impl;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import javax.transaction.Transactional;
@@ -23,11 +24,20 @@ public class GroupTaskBizImpl implements GroupTaskBiz {
 
     @Override
     public void handleProMarketBase(ProMarketBase pm) {
-        PackGroup pg = packGroupDao.findUnfinishGroup(pm.getId());
-        if (pg == null) {
+        List<PackGroup> list = packGroupDao.findUnfinishGroup(pm.getId());
+        if (list == null || list.isEmpty()) {
             createPackGroup(pm);
         } else {
-            checkGroupIsFinish(pm, pg);
+            boolean flag = false;
+            for (PackGroup pg : list) {
+                if (checkGroupIsFinish(pm, pg)) {
+                    flag = true;
+                }
+            }
+
+            if (flag) {
+                createPackGroup(pm);
+            }
         }
     }
 
@@ -44,13 +54,11 @@ public class GroupTaskBizImpl implements GroupTaskBiz {
         pg.setGroupNum(0);
         pg.setFinish((byte) 0);
         pg.setCreateTime(new Date());
-        //pg.setVersion(0);
 
         packGroupDao.save(pg);
-        //packGroupDao.flush();
     }
 
-    private void checkGroupIsFinish(ProMarketBase pm, PackGroup pg) {
+    private boolean checkGroupIsFinish(ProMarketBase pm, PackGroup pg) {
         long endTime = (pg.getEndTime() == null) ? 0 : pg.getEndTime().getTime();
         int groupNum = (pg.getGroupNum() == null) ? 0 : pg.getGroupNum();
         int groupLimit = (pm.getGroupLimit() == null) ? 0 : pm.getGroupLimit();
@@ -59,10 +67,9 @@ public class GroupTaskBizImpl implements GroupTaskBiz {
             pg.setFinish((byte) 1);
             pg.setFinishTime(new Date());
             packGroupDao.save(pg);
-            // packGroupDao.flush();
-
-            createPackGroup(pm);
+            return true;
         }
+        return false;
     }
 
 }
