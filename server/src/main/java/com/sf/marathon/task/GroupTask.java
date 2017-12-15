@@ -22,11 +22,11 @@ public class GroupTask {
     @Autowired
     private PackGroupDao packGroupDao;
 
-    @Scheduled(fixedRate = 6000)
-    public void executeGroupTask() {
-        List<ProMarketBase> list = proMarketBaseService.findAll();
-        list.forEach(pm -> handleProMarketBase(pm));
-    }
+//    @Scheduled(fixedRate = 6000)
+//    public void executeGroupTask() {
+//        List<ProMarketBase> list = proMarketBaseService.findAll();
+//        list.forEach(pm -> handleProMarketBase(pm));
+//    }
 
     private void handleProMarketBase(ProMarketBase pm) {
         PackGroup pg = packGroupDao.findUnfinishGroup(pm.getId());
