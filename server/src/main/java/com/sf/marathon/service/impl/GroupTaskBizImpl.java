@@ -1,18 +1,16 @@
 package com.sf.marathon.service.impl;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.UUID;
-
-import javax.transaction.Transactional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import com.sf.marathon.dao.PackGroupDao;
 import com.sf.marathon.domain.PackGroup;
 import com.sf.marathon.domain.ProMarketBase;
 import com.sf.marathon.service.GroupTaskBiz;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import javax.transaction.Transactional;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.UUID;
 
 @Component
 @Transactional
@@ -23,19 +21,19 @@ public class GroupTaskBizImpl implements GroupTaskBiz {
 
     @Override
     public void handleProMarketBase(ProMarketBase pm) {
-        PackGroup pg = packGroupDao.findUnfinishGroup(pm.getId());
-        if (pg == null) {
-            createPackGroup(pm);
-        } else {
-            checkGroupIsFinish(pm, pg);
-        }
+//        PackGroup pg = packGroupDao.findUnfinishGroup(pm.getId());
+//        if (pg == null) {
+//            createPackGroup(pm);
+//        } else {
+//            checkGroupIsFinish(pm, pg);
+//        }
     }
 
     @Override
     public void createPackGroup(ProMarketBase pm) {
         PackGroup pg = new PackGroup();
         pg.setId(UUID.randomUUID().toString());
-        pg.setPid(pm.getId());
+        pg.setProMarketBase(pm);
         pg.setBeginTime(new Date());
 
         Calendar c = Calendar.getInstance();

@@ -1,7 +1,7 @@
 package com.sf.marathon.service;
 
 import com.sf.marathon.Main;
-import com.sf.marathon.dao.ProMarketBaseDao;
+import com.sf.marathon.dao.ProMarketBaseRepository;
 import com.sf.marathon.domain.Customer;
 import com.sf.marathon.domain.PackGroup;
 import com.sf.marathon.domain.ProMarketBase;
@@ -18,7 +18,7 @@ import java.util.Date;
 @SpringBootTest(classes = Main.class)
 public class PackGroupServiceTest {
     @Autowired
-    private ProMarketBaseDao proMarketBaseDao;
+    private ProMarketBaseRepository proMarketBaseDao;
     @Autowired
     private PackGroupService groupService;
 

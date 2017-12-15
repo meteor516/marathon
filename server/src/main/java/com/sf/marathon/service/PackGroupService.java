@@ -3,7 +3,7 @@ package com.sf.marathon.service;
 import com.sf.marathon.Dto.CustomerDto;
 import com.sf.marathon.dao.CustomerDao;
 import com.sf.marathon.dao.PackGroupDao;
-import com.sf.marathon.dao.ProMarketBaseDao;
+import com.sf.marathon.dao.ProMarketBaseRepository;
 import com.sf.marathon.domain.Customer;
 import com.sf.marathon.domain.PackGroup;
 import com.sf.marathon.domain.ProMarketBase;
@@ -24,7 +24,7 @@ public class PackGroupService implements IPackGroupService {
     private CustomerDao customerDao;
 
     @Autowired
-    private ProMarketBaseDao proMarketBaseDao;
+    private ProMarketBaseRepository proMarketBaseDao;
 
 
 //    @Override
