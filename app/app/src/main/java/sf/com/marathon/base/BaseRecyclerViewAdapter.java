@@ -134,8 +134,6 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter {
 
     public interface OnItemClickListener {
         void onItemClick(View view, int position);
-
-
     }
 
     protected void onItemClickListener(RecyclerView.ViewHolder holder, final int position) {

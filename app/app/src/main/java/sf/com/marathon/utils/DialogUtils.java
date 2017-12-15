@@ -13,30 +13,20 @@ import sf.com.marathon.R;
 
 public class DialogUtils {
 
-    /**
-     * 提问框的 Listener
-     *
-     * @author
-     */
-    // 因为本类不是activity所以通过继承接口的方法获取到点击的事件
     public interface OnClickYesListener {
-        abstract void onClickYes();
+        void onClickYes();
     }
 
-    /**
-     * 提问框的 Listener
-     */
     public interface OnClickNoListener {
-        abstract void onClickNo();
+        void onClickNo();
     }
 
     public static void showQuestionDialog(Context context, String title,
                                           String text, final OnClickYesListener listenerYes,
                                           final OnClickNoListener listenerNo) {
-
         Builder builder = new AlertDialog.Builder(context);
 
-        if (!StringUtils.isEmpty(text)) {
+        if (StringUtils.isNotEmpty(text)) {
             // 此方法为dialog写布局
             final TextView textView = new TextView(context);
             textView.setText(text);
@@ -73,6 +63,5 @@ public class DialogUtils {
         builder.setCancelable(false);
         // 显示dialog
         builder.create().show();
-
     }
 }
