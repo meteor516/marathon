@@ -26,7 +26,8 @@ public class Result<T> {
         return isSuccess;
     }
 
-    public void setSuccess(Boolean success) {
+    public void setIsSuccess(Boolean success) {
         isSuccess = success;
     }
+
 }
