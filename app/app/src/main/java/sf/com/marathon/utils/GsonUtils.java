@@ -12,9 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by 866315 on 2015/10/10.
- */
 public class GsonUtils {
 
     private static Gson mGson = new GsonBuilder().disableHtmlEscaping().create();
@@ -52,9 +49,6 @@ public class GsonUtils {
         return  mGson.toJson(lists, listType);
     }
 
-    /**
-     * demo: GsonUtils.json2Array(result.toString(), new TypeToken<List<ProdPriceBean>>(){})
-     */
     public static <T> List<T> json2Array(String result, TypeToken<List<T>> typeToken) {
         return mGson.fromJson(result, typeToken.getType());
     }
