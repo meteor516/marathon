@@ -6,40 +6,41 @@ import javax.persistence.Id;
 
 @Entity(name = "tm_pro_market_base")
 public class ProMarketBase {
-    // 专业市场ID
+    //专业市场ID
     @Id
     @Column(name = "MKT_ID")
     private String id;
-    // 市场外部名称
+    //市场外部名称
     @Column(name = "MKT_NAME_SHOW")
     private String marketName;
-    // 单客日均最小件量
+    //单客日均最小件量
     @Column(name = "DAILY_MIN_PACKAGES")
     private Integer dailyMinPackages;
-    // 重量区间（最小）
+    //重量区间（最小）
     @Column(name = "WEIGHT_MIN")
     private Double minWeight;
-    // 重量区间（最大）
+    //重量区间（最大）
     @Column(name = "WEIGHT_MAX")
     private Double maxWeight;
-    // 首重价格
+    //首重价格
     @Column(name = "BASE_PRICE")
     private Double basePrice;
-    // 首重重量
+    //首重重量
     @Column(name = "BASE_WEIGHT")
     private Double baseWeight;
 
-    // 成团人数
-    @Column(name = "GROUP_LIMIT")
+    //成团人数
+    @Column(name = "group_limit")//GROUP_LIMIT
     private Integer groupLimit;
 
-    // 有效时间
+    //有效时间
     @Column(name = "GROUP_DURATION")
     private Integer groupDuration;
 
-    // 使用要求
+    //使用要求
     @Column(name = "USE_REQUIRE")
     private String useRequire;
+
 
     public String getId() {
         return id;
