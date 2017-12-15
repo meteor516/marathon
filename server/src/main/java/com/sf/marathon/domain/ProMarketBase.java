@@ -8,7 +8,7 @@ import javax.persistence.Id;
 public class ProMarketBase {
     //专业市场ID
     @Id
-    @Column(name = "id")
+    @Column(name = "MKT_ID")
     private String id;
     //市场外部名称
     @Column(name = "MKT_NAME_SHOW")
@@ -30,14 +30,17 @@ public class ProMarketBase {
     private double baseWeight;
 
     //成团人数
-
+    @Column(name = "GROUP_LIMIT")
     private int groupLimit;
 
     //有效时间
+    @Column(name = "GROUP_DURATION")
     private int groupDuration;
 
     //使用要求
+    @Column(name = "USE REQUIRE")
     private String useRequire;
+
 
     public String getId() {
         return id;
