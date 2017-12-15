@@ -49,11 +49,17 @@ public class GroupTask {
         pg.setGroupNum(0);
         pg.setFinish((byte) 0);
         pg.setCreateTime(new Date());
+        pg.setVersion(0);
+
         packGroupDao.save(pg);
     }
 
     private void checkGroupIsFinish(ProMarketBase pm, PackGroup pg) {
-        if ((new Date()).after(pg.getEndTime()) || (pg.getGroupNum() >= pm.getGroupLimit())) {
+        long endTime = (pg.getEndTime() == null) ? 0 : pg.getEndTime().getTime();
+        int groupNum = (pg.getGroupNum() == null) ? 0 : pg.getGroupNum();
+        int groupLimit = (pm.getGroupLimit() == null) ? 0 : pm.getGroupLimit();
+
+        if (System.currentTimeMillis() > endTime || groupNum >= groupLimit) {
             pg.setFinish((byte) 1);
             pg.setFinishTime(new Date());
             packGroupDao.save(pg);
