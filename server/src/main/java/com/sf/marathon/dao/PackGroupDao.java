@@ -1,9 +1,8 @@
 package com.sf.marathon.dao;
 
+import com.sf.marathon.domain.PackGroup;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-
-import com.sf.marathon.domain.PackGroup;
 
 public interface PackGroupDao extends JpaRepository<PackGroup, String> {
 
