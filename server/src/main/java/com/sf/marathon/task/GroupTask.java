@@ -21,12 +21,12 @@ public class GroupTask {
         int page = 0;
         int pageSize = 1000;
 
-        int resultSize = 0;
+        int resultSize;
         do {
             Page<ProMarketBase> result = proMarketBaseService.findAll(page++, pageSize);
             resultSize = result.getContent().size();
             if (resultSize > 0) {
-                result.getContent().forEach(pm -> groupTaskBiz.handleProMarketBase(pm));
+                result.getContent().forEach(groupTaskBiz::handleProMarketBase);
             }
         } while (resultSize >= pageSize);
     }
