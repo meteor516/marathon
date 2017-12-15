@@ -1,25 +1,22 @@
 package sf.com.marathon;
 
-import android.app.Activity;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
-import java.net.URL;
-
-import sf.com.marathon.beans.CollectionInformation;
-import sf.com.marathon.connectivity.HttpClient;
 import sf.com.marathon.connectivity.TransferManager;
+import sf.com.marathon.contact.ProMarketBase;
 import sf.com.marathon.utils.GsonUtils;
 import sf.com.marathon.utils.ToastUtils;
 
 import static sf.com.marathon.utils.UrlConstants.URL_GET_COLLECTION_INFORMATION;
 
-public class MainActivity extends Activity {
-
+public class MainActivity extends AppCompatActivity {
     private TextView collectionNameView;
     private TextView weightView;
     private TextView minSendPackageView;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +30,12 @@ public class MainActivity extends Activity {
     }
 
     private void requestAndShowInformation() {
-        TransferManager.buildClient(URL_GET_COLLECTION_INFORMATION)
+        TransferManager.buildClient(getApplicationContext(), URL_GET_COLLECTION_INFORMATION)
                 .withOnSuccessListener(new TransferManager.OnSuccessListener() {
                     @Override
                     public void onSuccess(String json) {
-                        CollectionInformation collectionInformation = GsonUtils.json2Bean(json, CollectionInformation.class);
-                        showInformation(collectionInformation);
+                        ProMarketBase proMarketBase = GsonUtils.json2Bean(json, ProMarketBase.class);
+                        showMarketInformation(proMarketBase);
                     }
                 })
                 .withOnFailedListener(new TransferManager.OnFailedListener() {
@@ -53,11 +50,14 @@ public class MainActivity extends Activity {
         collectionNameView = findViewById(R.id.collection_name_view);
         weightView = findViewById(R.id.weight_view);
         minSendPackageView = findViewById(R.id.min_send_package_view);
+        toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
     }
 
-    private void showInformation(CollectionInformation collectionInformation) {
-        collectionNameView.setText(collectionInformation.getName());
-        weightView.setText(String.format(getString(R.string.weight_format), collectionInformation.getMinWeight(), collectionInformation.getMaxWeight()));
-        minSendPackageView.setText(String.format(getString(R.string.count_of_day), collectionInformation.getCountOfDayWithSending()));
+    private void showMarketInformation(ProMarketBase proMarketBase) {
+        collectionNameView.setText(proMarketBase.getMarketName());
+        weightView.setText(String.format(getString(R.string.weight_format), proMarketBase.getMinWeight(), proMarketBase.getMaxWeight()));
+        minSendPackageView.setText(String.format(getString(R.string.count_of_day), proMarketBase.getDailyMinPackages()));
     }
 }

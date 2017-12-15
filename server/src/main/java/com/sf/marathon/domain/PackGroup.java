@@ -1,11 +1,7 @@
 package com.sf.marathon.domain;
 
+import javax.persistence.*;
 import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Version;
 
 @Entity(name = "tt_pack_group")
 public class PackGroup {
@@ -13,8 +9,7 @@ public class PackGroup {
     @Id
     @Column(name = "id")
     private String id;
-    @Column(name = "pid")
-    private String pid;
+
     @Column(name = "begin_time")
     private Date beginTime;
     @Column(name = "end_time")
@@ -27,8 +22,12 @@ public class PackGroup {
     private Date createTime;
     @Column(name = "finish_time")
     private Date finishTime;
+
+    @ManyToOne(cascade = CascadeType.ALL, optional = true)
+    @JoinColumn(name = "pid")//这里设置JoinColum设置了外键的名字，并且orderItem是关系维护端
+    private ProMarketBase proMarketBase;
+
     @Version
-    @Column(name = "version")
     private int version;
 
     public String getId() {
@@ -37,14 +36,6 @@ public class PackGroup {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getPid() {
-        return pid;
-    }
-
-    public void setPid(String pid) {
-        this.pid = pid;
     }
 
     public Date getBeginTime() {
@@ -93,6 +84,14 @@ public class PackGroup {
 
     public void setFinishTime(Date finishTime) {
         this.finishTime = finishTime;
+    }
+
+    public ProMarketBase getProMarketBase() {
+        return proMarketBase;
+    }
+
+    public void setProMarketBase(ProMarketBase proMarketBase) {
+        this.proMarketBase = proMarketBase;
     }
 
     public int getVersion() {

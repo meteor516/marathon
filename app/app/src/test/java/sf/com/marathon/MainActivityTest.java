@@ -12,6 +12,7 @@ import org.robolectric.util.ActivityController;
 
 import sf.com.marathon.beans.CollectionInformation;
 import sf.com.marathon.com.sf.marathon.shadows.ShadowHttpClient;
+import sf.com.marathon.contact.ProMarketBase;
 import sf.com.marathon.utils.GsonUtils;
 
 import static org.fest.assertions.api.Assertions.assertThat;
@@ -66,13 +67,13 @@ public class MainActivityTest {
     }
 
     private void fakeResponse() {
-        CollectionInformation collectionInformation = new CollectionInformation();
-        collectionInformation.setName("鞋服专送080901期");
-        collectionInformation.setMinWeight(1.5);
-        collectionInformation.setMaxWeight(5);
-        collectionInformation.setCountOfDayWithSending(20);
+        ProMarketBase proMarketBase = new ProMarketBase();
+        proMarketBase.setMarketName("鞋服专送080901期");
+        proMarketBase.setMinWeight(1.5);
+        proMarketBase.setMaxWeight(5);
+        proMarketBase.setDailyMinPackages(20);
 
-        String bean2Json = GsonUtils.bean2Json(collectionInformation);
+        String bean2Json = GsonUtils.bean2Json(proMarketBase);
         ShadowHttpClient.fakeResult(bean2Json);
     }
 }
