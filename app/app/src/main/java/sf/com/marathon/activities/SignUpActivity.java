@@ -1,5 +1,6 @@
 package sf.com.marathon.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -7,14 +8,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import sf.com.marathon.R;
 import sf.com.marathon.connectivity.TransferManager;
+import sf.com.marathon.contact.SignUpBean;
 import sf.com.marathon.utils.StringUtils;
 import sf.com.marathon.utils.ToastUtils;
 import sf.com.marathon.utils.UrlConstants;
 
+import static sf.com.marathon.utils.DeviceUtil.deviceId;
 import static sf.com.marathon.utils.StringUtils.isBiggerThanAndEquals;
 import static sf.com.marathon.utils.StringUtils.isNotEmpty;
 
@@ -28,6 +32,8 @@ public class SignUpActivity extends BaseActivity {
     private EditText countView;
     private EditText weightEditView;
     private View backButton;
+    private String packId;
+    private String proId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +43,15 @@ public class SignUpActivity extends BaseActivity {
 
         initUi();
         initListener();
+        extractValue();
 
         signUp();
+    }
+
+    private void extractValue() {
+        Intent intent = getIntent();
+        packId = (String) intent.getSerializableExtra("packId");
+        proId = (String) intent.getSerializableExtra("proId");
     }
 
     private void initListener() {
@@ -96,7 +109,13 @@ public class SignUpActivity extends BaseActivity {
                 .withOnSuccessListener(new TransferManager.OnSuccessListener() {
                     @Override
                     public void onSuccess(String json) {
+                        SignUpBean signUpBean = new SignUpBean();
 
+                        signUpBean.setPackId(packId);
+                        signUpBean.setGroupTime(new Date());
+                        signUpBean.setRegion(addressSelectView.getText().toString() + addressEditView.getText().toString());
+                        signUpBean.setUserName(deviceId(getApplicationContext()));
+                        signUpBean.setProId(proId);
                     }
                 })
                 .get();

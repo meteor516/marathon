@@ -20,6 +20,7 @@ public class MainActivity extends Activity {
     private TextView minSendPackageView;
     private TextView attentionView;
     private TextView deadLineView;
+    private Pack pack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,16 +61,23 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+
+                intent.putExtra("proId", 1);
+                intent.putExtra("packId", 1);
+
                 startActivity(intent);
             }
         });
     }
 
     private void showMarketInformation(Pack pack) {
+        this.pack = pack;
+
         collectionNameView.setText(pack.getMarketName());
         weightView.setText(String.format(getString(R.string.weight_format), pack.getMinWeight(), pack.getMaxWeight()));
         minSendPackageView.setText(String.format(getString(R.string.count_of_day), pack.getDailyMinPackages()));
         attentionView.setText(pack.getUseRequire());
-        deadLineView.setText(String .format(getString(R.string.date_format), pack.getEndTime()));
+        deadLineView.setText(String.format(getString(R.string.date_format), pack.getEndTime()));
+        pack.
     }
 }
