@@ -7,18 +7,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sf.marathon.domain.Pack;
 import com.sf.marathon.domain.ProMarketBase;
-import com.sf.marathon.service.impl.ProMarketBaseService;
-
+import com.sf.marathon.service.impl.PackService;
 @RestController
 public class ProMarketBaseController {
 	
 	@Autowired
-	public ProMarketBaseService proMarketBaseService;
+	public PackService packService;
 
 	@RequestMapping(value = "/list/{page}/{pageSize}", method = RequestMethod.GET)
-	public Page<ProMarketBase> list(@PathVariable("page")int page, @PathVariable("pageSize")int pageSize) {
-		return proMarketBaseService.findAll(page,pageSize);
+	public Page<Pack> list(@PathVariable("page")int page, @PathVariable("pageSize")int pageSize) {
+		return null;
 	}
 	
 	@RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
