@@ -40,7 +40,7 @@ public class GroupTaskBizImpl implements GroupTaskBiz {
     }
 
     @Override
-    public void createPackGroup(ProMarketBase pm) {
+    public PackGroup createPackGroup(ProMarketBase pm) {
         PackGroup pg = new PackGroup();
         pg.setId(UUID.randomUUID().toString());
         pg.setProMarketBase(pm);
@@ -54,6 +54,8 @@ public class GroupTaskBizImpl implements GroupTaskBiz {
         pg.setCreateTime(new Date());
 
         packGroupDao.save(pg);
+        
+        return pg;
     }
 
     private boolean checkGroupIsFinish(ProMarketBase pm, PackGroup pg) {

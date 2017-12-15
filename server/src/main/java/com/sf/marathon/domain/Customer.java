@@ -37,13 +37,13 @@ public class Customer {
         this.id = id;
     }
 
-//    public PackGroup getPackGroup() {
-//        return packGroup;
-//    }
-//
-//    public void setPackGroup(PackGroup packGroup) {
-//        this.packGroup = packGroup;
-//    }
+    public PackGroup getPackGroup() {
+        return packGroup;
+    }
+
+    public void setPackGroup(PackGroup packGroup) {
+        this.packGroup = packGroup;
+    }
 
     public String getUserName() {
         return userName;
